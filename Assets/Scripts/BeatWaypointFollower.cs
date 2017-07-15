@@ -15,10 +15,12 @@ namespace Assets.Scripts
 
 	public class BeatWaypointFollower : AbstractBeatable
 	{
+		private static readonly int SPEED = Animator.StringToHash("Speed");
+		private static readonly int BEAT = Animator.StringToHash("Beat");
+
 		private const float epsilon = 0.1f;
 		public WaypointMovementMode movementMode;
 		public WaypointWarppingMode wrappingMode;
-		public float movementTime = 0.2f;
 		public AnimationCurve movementEasing;
 		public Transform waypointsParent;
 		public Transform objectTransform;
@@ -28,6 +30,20 @@ namespace Assets.Scripts
 		private Vector3 endPos;
 		private float timer = float.MaxValue;
 		private int nextWaypointDirection = 1;
+		private float movementTime = 0.2f;
+		private Animator animator;
+
+		protected override void OnEnable()
+		{
+			base.OnEnable();
+			movementTime = 1f/beatMaster.songInfo.Bps;
+			animator = GetComponent<Animator>();
+
+			if (animator != null)
+			{
+				animator.SetFloat(SPEED, beatMaster.songInfo.Bps);
+			}
+		}
 
 		void Update()
 		{
@@ -42,6 +58,11 @@ namespace Assets.Scripts
 
 		protected override void OnBeat()
 		{
+			if (animator != null)
+			{
+				animator.SetTrigger(BEAT);
+			}
+
 			int lastIndex;
 
 			switch (movementMode)
@@ -131,7 +152,7 @@ namespace Assets.Scripts
 		{
 			if (waypointsParent == null) return;
 
-			Gizmos.color = Color.red;
+			Gizmos.color = Color.blue;
 
 			for (int i = 1; i < waypointsParent.childCount; ++i)
 			{
