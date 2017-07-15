@@ -108,6 +108,52 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &82801064
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (22)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &109297495
 Prefab:
   m_ObjectHideFlags: 0
@@ -145,10 +191,56 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4980799269504100, guid: 9bbe56134a3837142874172528409b79, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bbe56134a3837142874172528409b79, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &156330648
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (27)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &173335549
 Prefab:
@@ -187,7 +279,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -233,7 +325,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -279,7 +371,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -325,7 +417,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -360,7 +452,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -411,7 +503,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &336374289
 Prefab:
@@ -458,7 +550,7 @@ Prefab:
     - target: {fileID: 224862624878683446, guid: 726d6ad3035aa8140ba6013a825ff1e2,
         type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 224862624878683446, guid: 726d6ad3035aa8140ba6013a825ff1e2,
         type: 2}
@@ -554,7 +646,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -600,7 +692,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -646,7 +738,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -692,7 +784,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -738,11 +830,57 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
       value: DanceFloorTile (12)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &568415518
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (32)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
@@ -784,7 +922,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 30
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -830,7 +968,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -960,7 +1098,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &756299156
 Prefab:
@@ -999,11 +1137,57 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 27
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
       value: DanceFloorTile (15)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &829234186
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (25)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
@@ -1045,11 +1229,57 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
       value: DanceFloorTile (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1098352145
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (29)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
@@ -1091,10 +1321,102 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4664973833319774, guid: 0310f35e7f013ce48af013ea2a57f6c0, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0310f35e7f013ce48af013ea2a57f6c0, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1169478268
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (31)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1218559065
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (30)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1238024731
 Prefab:
@@ -1133,11 +1455,57 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
       value: DanceFloorTile (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1280789663
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (26)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
@@ -1179,7 +1547,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 31
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -1188,102 +1556,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1339166307
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1339166309}
-  - component: {fileID: 1339166308}
-  - component: {fileID: 1339166310}
-  m_Layer: 0
-  m_Name: Directional Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &1339166308
-Light:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1339166307}
-  m_Enabled: 1
-  serializedVersion: 8
-  m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.5
-  m_Range: 10
-  m_SpotAngle: 30
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_Lightmapping: 4
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_FalloffTable:
-    m_Table[0]: 0
-    m_Table[1]: 0
-    m_Table[2]: 0
-    m_Table[3]: 0
-    m_Table[4]: 0
-    m_Table[5]: 0
-    m_Table[6]: 0
-    m_Table[7]: 0
-    m_Table[8]: 0
-    m_Table[9]: 0
-    m_Table[10]: 0
-    m_Table[11]: 0
-    m_Table[12]: 0
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &1339166309
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1339166307}
-  m_LocalRotation: {x: 0.50723594, y: -0.45831588, z: 0.04745719, w: 0.7282899}
-  m_LocalPosition: {x: 1.73, y: 3, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 51.474003, y: -83.981, z: -39.456}
---- !u!114 &1339166310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1339166307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e74d4a815dc2c444b429aa527c6260d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightSource: {fileID: 1339166308}
-  colors:
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 1, g: 0.97241366, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0.08965516, a: 0}
 --- !u!1001 &1354805072
 Prefab:
   m_ObjectHideFlags: 0
@@ -1321,7 +1593,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -1367,7 +1639,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -1413,7 +1685,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -1459,7 +1731,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4317301814430770, guid: 81df9bc4397982e4a9d6b358138b79fc, type: 2}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81df9bc4397982e4a9d6b358138b79fc, type: 2}
@@ -1501,11 +1773,57 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
       value: DanceFloorTile01
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1572581491
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (21)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
@@ -1547,7 +1865,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -1593,7 +1911,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4644732686540266, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
@@ -1635,7 +1953,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4747204088890334, guid: 9e634c6a567addf4782e68c985cb85a7, type: 2}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4747204088890334, guid: 9e634c6a567addf4782e68c985cb85a7, type: 2}
       propertyPath: m_LocalScale.z
@@ -1643,6 +1961,144 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e634c6a567addf4782e68c985cb85a7, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1788179076
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (28)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1890408945
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (24)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1923807446
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (23)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1978193569
 Prefab:
@@ -1653,7 +2109,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4150125798912138, guid: a2884d88c365d674fb21b20c6f9daf20, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4150125798912138, guid: a2884d88c365d674fb21b20c6f9daf20, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1661,7 +2117,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4150125798912138, guid: a2884d88c365d674fb21b20c6f9daf20, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 7
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4150125798912138, guid: a2884d88c365d674fb21b20c6f9daf20, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1681,7 +2137,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4150125798912138, guid: a2884d88c365d674fb21b20c6f9daf20, type: 2}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2884d88c365d674fb21b20c6f9daf20, type: 2}
@@ -1723,7 +2179,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4257737291097986, guid: add6cf2bf9208fe44a802321e6b8a86a, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1034622229160772, guid: add6cf2bf9208fe44a802321e6b8a86a, type: 2}
       propertyPath: m_Name
@@ -1741,6 +2197,52 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: add6cf2bf9208fe44a802321e6b8a86a, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &2118052912
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_RootOrder
+      value: 44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
+      propertyPath: m_Name
+      value: DanceFloorTile (33)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &2119578813
 Prefab:
@@ -1779,7 +2281,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4074066038579646, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1398297736435494, guid: 7b5db8803dc7cf648b1ce7f5a486d464, type: 2}
       propertyPath: m_Name
@@ -1828,5 +2330,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
