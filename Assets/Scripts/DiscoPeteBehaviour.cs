@@ -8,28 +8,29 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     enum DIR { IDLE, UP, DOWN, LEFT, RIGHT}
 
     // Privates
-    private DIR eDir = DIR.IDLE;
-    private float fMoved = 0.0f;
-    private float fSpeed = 5.0f;
+    private DIR m_eDir = DIR.IDLE;
+    private float m_fMoved = 0.0f;
+    private float m_fSpeed = 7.0f;
+    private bool m_bPrevKeyPressed = false;
 
 
-    private BeatMaster beatMaster;
+    private BeatMaster m_pBeatMaster;
   //  private Animator animator;
 
     // Use this for initialization
     void OnEnable()
     {
         GameObject bmGO = GameObject.FindWithTag("Music");
-        beatMaster = bmGO.GetComponent<BeatMaster>();
-    //    animator = GetComponent<Animator>();
+        m_pBeatMaster = bmGO.GetComponent<BeatMaster>();
+        //    animator = GetComponent<Animator>();
 
-        beatMaster.beatEvent += BeatMasterOnBeatEvent;
+        m_pBeatMaster.beatEvent += BeatMasterOnBeatEvent;
     }
 
     void OnDisable()
     {
-        if (beatMaster != null)
-            beatMaster.beatEvent -= BeatMasterOnBeatEvent;
+        if (m_pBeatMaster != null)
+            m_pBeatMaster.beatEvent -= BeatMasterOnBeatEvent;
     }
 
     // Update is called once per frame
@@ -41,72 +42,54 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
     void UpdateDirection()
     {
-        if(eDir == DIR.IDLE)
+        DIR eCurrDir = ItlGetDirFromInput();
+
+        if(m_eDir == DIR.IDLE && !m_bPrevKeyPressed && m_pBeatMaster.allowsJump())
         {
-            float fHorizontal = Input.GetAxisRaw("Horizontal");
-            float fVertical = Input.GetAxisRaw("Vertical");
-
-
-            if(fHorizontal > 0)
-            {
-                Debug.Log("DIR.RIGHT");
-                eDir = DIR.RIGHT;
-            }
-            else if(fHorizontal < 0)
-            {
-                Debug.Log("DIR.LEFT");
-                eDir = DIR.LEFT;
-            }
-            else if(fVertical > 0)
-            {
-                Debug.Log("DIR.UP");
-                eDir = DIR.UP;
-            }
-            else if(fVertical < 0)
-            {
-                Debug.Log("DIR.DOWN");
-                eDir = DIR.DOWN;
-            }
+            m_eDir = eCurrDir;
 
           //  if(eDir != DIR.IDLE)
             //    animator.SetTrigger("JUMP");
         }
+
+        m_bPrevKeyPressed = (eCurrDir != DIR.IDLE);
     }
 
     void MovePete()
     {
-        if(eDir != DIR.IDLE)
+        if(m_eDir != DIR.IDLE)
         {
-            float fDelta = fSpeed * Time.deltaTime;
-            if (fMoved + fDelta > 1.0f)
-                fDelta = 1.0f - fMoved;
+            float fDelta = m_fSpeed * Time.deltaTime;
+            if (m_fMoved + fDelta > 1.0f)
+                fDelta = 1.0f - m_fMoved;
 
-            if(eDir == DIR.RIGHT)
+            if(m_eDir == DIR.RIGHT)
             {
                 transform.Translate(Vector3.right * fDelta);
             }
-            else if(eDir == DIR.LEFT)
+            else if(m_eDir == DIR.LEFT)
             {
                 transform.Translate(Vector3.left * fDelta);
             }
-            else if (eDir == DIR.UP)
+            else if (m_eDir == DIR.UP)
             {
                 transform.Translate(Vector3.forward * fDelta);
             }
-            else if (eDir == DIR.DOWN)
+            else if (m_eDir == DIR.DOWN)
             {
                 transform.Translate(Vector3.back * fDelta);
             }
 
-            fMoved += fDelta;
+            m_fMoved += fDelta;
 
             // Jumping
-            transform.position = new Vector3(transform.position.x, Mathf.Sin(fMoved * Mathf.PI), transform.position.z);
+            transform.position = new Vector3(transform.position.x, Mathf.Sin(m_fMoved * Mathf.PI), transform.position.z);
 
-            if (fMoved == 1.0f)
+            if (m_fMoved >= 1.0f)
             {
-                fMoved = 0.0f;
-                eDir = DIR.IDLE;
+                m_fMoved = 0.0f;
+                transform.position = new Vector3(Mathf.Floor(transform.position.x + 0.5f), 0.0f, Mathf.Floor(transform.position.z + 0.5f));
+                m_eDir = DIR.IDLE;
             }
         }
     }
@@ -115,5 +98,36 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     {
         //print("DiscoPete Beat");
        // animator.SetTrigger("BEAT");
+    }
+
+    private DIR ItlGetDirFromInput()
+    {
+        DIR eDir = DIR.IDLE;
+
+        float fHorizontal = Input.GetAxisRaw("Horizontal");
+        float fVertical = Input.GetAxisRaw("Vertical");
+
+        if (fHorizontal > 0)
+        {
+            //Debug.Log("DIR.RIGHT");
+            eDir = DIR.RIGHT;
+        }
+        else if (fHorizontal < 0)
+        {
+            //Debug.Log("DIR.LEFT");
+            eDir = DIR.LEFT;
+        }
+        else if (fVertical > 0)
+        {
+            //Debug.Log("DIR.UP");
+            eDir = DIR.UP;
+        }
+        else if (fVertical < 0)
+        {
+            //Debug.Log("DIR.DOWN");
+            eDir = DIR.DOWN;
+        }
+
+        return eDir;
     }
 }
