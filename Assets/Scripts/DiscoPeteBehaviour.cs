@@ -11,15 +11,29 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     private DIR eDir = DIR.IDLE;
     private float fMoved = 0.0f;
     private float fSpeed = 5.0f;
-    private Animator animator;
+
+
+    private BeatMaster beatMaster;
+  //  private Animator animator;
 
     // Use this for initialization
-    void Start () {
-        animator = GetComponent<Animator>();
+    void OnEnable()
+    {
+        GameObject bmGO = GameObject.FindWithTag("Music");
+        beatMaster = bmGO.GetComponent<BeatMaster>();
+    //    animator = GetComponent<Animator>();
+
+        beatMaster.beatEvent += BeatMasterOnBeatEvent;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void OnDisable()
+    {
+        if (beatMaster != null)
+            beatMaster.beatEvent -= BeatMasterOnBeatEvent;
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         UpdateDirection();
         MovePete();
@@ -32,7 +46,6 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             float fHorizontal = Input.GetAxisRaw("Horizontal");
             float fVertical = Input.GetAxisRaw("Vertical");
 
-//            animator.SetTrigger("JUMP");
 
             if(fHorizontal > 0)
             {
@@ -54,6 +67,9 @@ public class DiscoPeteBehaviour : MonoBehaviour {
                 Debug.Log("DIR.DOWN");
                 eDir = DIR.DOWN;
             }
+
+          //  if(eDir != DIR.IDLE)
+            //    animator.SetTrigger("JUMP");
         }
     }
 
@@ -84,11 +100,20 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
             fMoved += fDelta;
 
+            // Jumping
+            transform.position = new Vector3(transform.position.x, Mathf.Sin(fMoved * Mathf.PI), transform.position.z);
+
             if (fMoved == 1.0f)
             {
                 fMoved = 0.0f;
                 eDir = DIR.IDLE;
             }
         }
+    }
+
+    private void BeatMasterOnBeatEvent()
+    {
+        //print("DiscoPete Beat");
+       // animator.SetTrigger("BEAT");
     }
 }
