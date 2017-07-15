@@ -13,7 +13,7 @@ public class BeatMaster : MonoBehaviour
 	public float beatOffset;
 	public float bps;
 
-    public float maxBeatDiff = 0.2f;
+    public float maxBeatDiff = 0.1f;
 
 	private int lastBeatIndex = -1;
 	
@@ -38,6 +38,7 @@ public class BeatMaster : MonoBehaviour
         float fNearestBeat = Mathf.Floor(fCurrentTimeBeat + 0.5f);
 
         float fDiff = Mathf.Abs(fCurrentTimeBeat - fNearestBeat);
+        fDiff /= bps;
 
 		//Debug.Log(string.Format("Beat diff: {0}", fDiff));
 

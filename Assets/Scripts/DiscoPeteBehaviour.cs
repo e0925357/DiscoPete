@@ -58,12 +58,17 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
         if(m_eDir == DIR.IDLE && eCurrDir != DIR.IDLE && !m_bPrevKeyPressed)
         {
-	        if (m_pBeatMaster.allowsJump())
-	        {
-		        if (m_iLockedBeat != m_pBeatMaster.NearestBeat)
-			        m_eDir = eCurrDir;
+            if (m_pBeatMaster.allowsJump())
+            {
+                if (m_iLockedBeat != m_pBeatMaster.NearestBeat)
+                    m_eDir = eCurrDir;
+            }
+            else
+            {
+                m_iLockedBeat = m_pBeatMaster.NextBeat;
+            }
 
-            if(m_eDir != DIR.IDLE)
+            if (m_eDir != DIR.IDLE)
             {
                 m_pGridMaster.OnDiscoPeteLeavesTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
             }
@@ -71,11 +76,6 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             {
                 m_pGridMaster.OnDiscoPeteStaysOnTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
             }*/
-	        }
-	        else
-	        {
-		        m_iLockedBeat = m_pBeatMaster.NextBeat;
-	        }
         }
 
         m_bPrevKeyPressed = (eCurrDir != DIR.IDLE);
