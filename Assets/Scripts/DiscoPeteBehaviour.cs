@@ -23,6 +23,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     {
         GameObject bmGO = GameObject.FindWithTag("Music");
         m_pBeatMaster = bmGO.GetComponent<BeatMaster>();
+        m_fSpeed = m_pBeatMaster.getDiscoPeteSpeedDependingOnMusic();
 
         GameObject gmGO = GameObject.FindWithTag("GridMaster");
         m_pGridMaster = gmGO.GetComponent<GridMaster>();

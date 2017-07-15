@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songInfo: {fileID: 11400000, guid: 68c123a858bc6994f82519e7cf017a21, type: 2}
-  maxBeatDiff: 0.2
+  maxBeatDiff: 0.15
 --- !u!1001 &490825519
 Prefab:
   m_ObjectHideFlags: 0
