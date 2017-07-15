@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts
 {
-	public abstract class AbstractTrap : AbstractBeatable
+	public abstract class AbstractTrap : GridTile
 	{
 		public int activeTime = 2;
 		public int inactiveTime = 3;
@@ -11,8 +11,9 @@ namespace Assets.Scripts
 
 		private int beatCount = 0;
 
-		protected virtual void Start()
+		protected override void Start()
 		{
+			base.Start();
 			beatCount = startActive ? 0 : activeTime;
 		}
 

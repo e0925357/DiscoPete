@@ -15,6 +15,14 @@ namespace Assets.Scripts
 			animator = GetComponent<Animator>();
 		}
 
+		public override void OnDiscoPeteLanded(DiscoPeteBehaviour pete)
+		{
+			if (Active)
+			{
+				pete.Say("I'm dead!");
+			}
+		}
+
 		protected override bool Active
 		{
 			get

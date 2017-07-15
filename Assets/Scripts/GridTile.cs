@@ -7,7 +7,7 @@ public abstract class GridTile : Assets.Scripts.AbstractBeatable {
 
     private GridMaster gridMaster;
 
-    void Start()
+    protected virtual void Start()
     {
         int iXPosInGrid = Mathf.FloorToInt(transform.position.x + 0.5f);
         int iZPosInGrid = Mathf.FloorToInt(transform.position.z + 0.5f);
