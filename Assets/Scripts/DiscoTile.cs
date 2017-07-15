@@ -3,16 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiscoTile : MonoBehaviour {
+public class DiscoTile : GridTile {
 
 	[SerializeField]
 	private DiscoColorsProfile discoColors = null;
 
 	// Use this for initialization
-	void Start () {
-		StartCoroutine(ChangeToRandomColor());
+	protected override void Start () {
+		base.Start();
 		int index = UnityEngine.Random.Range(0, discoColors.DiscoColors.Length - 1);
 		SetDiscoColor(discoColors.DiscoColors[index]);
+	}
+
+	public override void OnDiscoPeteLanded(DiscoPeteBehaviour pete)
+	{
+		//do nothig
 	}
 
 	void SetDiscoColor(Color color)
@@ -20,19 +25,10 @@ public class DiscoTile : MonoBehaviour {
 		GetComponentInChildren<Renderer>().materials[1].SetColor("_Color", color);
 		GetComponentInChildren<Renderer>().materials[1].SetColor("_EmissionColor", color);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-	IEnumerator ChangeToRandomColor()
+	protected override void OnBeat()
 	{
-		while (true)
-		{
-			yield return new WaitForSeconds(1.0f);
-			int index = UnityEngine.Random.Range(0, discoColors.DiscoColors.Length - 1);
-			SetDiscoColor(discoColors.DiscoColors[index]);
-		}
+		int index = UnityEngine.Random.Range(0, discoColors.DiscoColors.Length - 1);
+		SetDiscoColor(discoColors.DiscoColors[index]);
 	}
 }
