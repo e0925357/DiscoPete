@@ -470,7 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702006061cb27d84398a0269852e1a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  songInfo: {fileID: 11400000, guid: 49be092c55cc32e48b05d5bc3f6ae0e7, type: 2}
+  songInfo: {fileID: 11400000, guid: 68c123a858bc6994f82519e7cf017a21, type: 2}
   maxBeatDiff: 0.2
 --- !u!1001 &608939537
 Prefab:
@@ -731,6 +731,42 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4715305534225242, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715305534225242, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715305534225242, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715305534225242, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715305534225242, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715305534225242, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715305534225242, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715305534225242, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715305534225242, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
   m_IsPrefabParent: 0
@@ -984,6 +1020,11 @@ Prefab:
     - target: {fileID: 1263950943246838, guid: 337569835b6b2ab4eaa391a5ea1dac69, type: 2}
       propertyPath: m_Name
       value: SpikeTrap (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114610494441392008, guid: 337569835b6b2ab4eaa391a5ea1dac69,
+        type: 2}
+      propertyPath: activeTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 337569835b6b2ab4eaa391a5ea1dac69, type: 2}
