@@ -3,19 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiscoTile : GridTile {
+public class DiscoBeatColor : MonoBehaviour {
 
 	[SerializeField]
 	private DiscoColorsProfile discoColors = null;
 
 	// Use this for initialization
-	protected override void Start () {
-		base.Start();
+	protected void Start () {
 		int index = UnityEngine.Random.Range(0, discoColors.DiscoColors.Length - 1);
 		SetDiscoColor(discoColors.DiscoColors[index]);
 	}
 
-	public override void OnDiscoPeteLanded(DiscoPeteBehaviour pete)
+	public void OnDiscoPeteLanded(DiscoPeteBehaviour pete)
 	{
 		//do nothig
 	}
@@ -26,7 +25,7 @@ public class DiscoTile : GridTile {
 		GetComponentInChildren<Renderer>().materials[1].SetColor("_EmissionColor", color);
 	}
 
-	protected override void OnBeat()
+	protected void OnBeat()
 	{
 		int index = UnityEngine.Random.Range(0, discoColors.DiscoColors.Length - 1);
 		SetDiscoColor(discoColors.DiscoColors[index]);
