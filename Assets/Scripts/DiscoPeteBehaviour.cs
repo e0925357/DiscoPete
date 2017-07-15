@@ -80,15 +80,19 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     {
         DIR eCurrDir = ItlGetDirFromInput();
 
-        if(m_eDir == DIR.IDLE && eCurrDir != DIR.IDLE && !m_bPrevKeyPressed)
+        if(m_eDir == DIR.IDLE && // currently idle
+            eCurrDir != DIR.IDLE && // want to jump
+            !m_bPrevKeyPressed && // jump only allowed if previously no key was pressed
+            m_pBeatMaster.NearestBeat > m_iLastJumpedBeat) // jump only allowed once per beat
         {
-            if (m_pBeatMaster.allowsJump())
+            if (m_pBeatMaster.allowsJump()) // Check if the beatmaster allows us to jump
             {
-                if (m_iLockedBeat != m_pBeatMaster.NearestBeat)
+                if (m_iLockedBeat != m_pBeatMaster.NearestBeat) // check if movement is not locked
                 {
                     Debug.Log("--- JUMP BEGIN");
-                    m_eDir = eCurrDir;
-                    m_iLastJumpedBeat = m_pBeatMaster.NearestBeat;
+                    m_eDir = eCurrDir; // change direction
+                    m_iLastJumpedBeat = m_pBeatMaster.NearestBeat; // set last beat where pete jumped
+                    ItlSetRotationFromDir(); // apply the rotation corresponding to the current direction
                 }
             }
             else
@@ -115,19 +119,19 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
             if(m_eDir == DIR.RIGHT)
             {
-                transform.Translate(Vector3.right * fDelta);
+                transform.Translate(Vector3.right * fDelta, Space.World);
             }
             else if(m_eDir == DIR.LEFT)
             {
-                transform.Translate(Vector3.left * fDelta);
+                transform.Translate(Vector3.left * fDelta, Space.World);
             }
             else if (m_eDir == DIR.UP)
             {
-                transform.Translate(Vector3.forward * fDelta);
+                transform.Translate(Vector3.forward * fDelta, Space.World);
             }
             else if (m_eDir == DIR.DOWN)
             {
-                transform.Translate(Vector3.back * fDelta);
+                transform.Translate(Vector3.back * fDelta, Space.World);
             }
 
             m_fMoved += fDelta;
@@ -146,6 +150,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
                 m_pGridMaster.OnDiscoPeteLanded(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
             }
+
         }
     }
 
@@ -178,5 +183,24 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         }
 
         return eDir;
+    }
+
+    private void ItlSetRotationFromDir()
+    {
+        switch(m_eDir)
+        {
+            case DIR.RIGHT:
+                transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
+                break;
+            case DIR.LEFT:
+                transform.rotation = Quaternion.AngleAxis(90, Vector3.up);
+                break;
+            case DIR.DOWN:
+                transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+                break;
+            case DIR.UP:
+                transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+                break;
+        }
     }
 }
