@@ -67,6 +67,10 @@ public class BeatMaster : MonoBehaviour
         return fDiff < maxBeatDiff;
     }
 
+    public float getDiscoPeteSpeedDependingOnMusic()
+    {
+        return 2.0f * songInfo.Bps;
+    }
 
 	private int getBeatIndex(float time)
 	{
