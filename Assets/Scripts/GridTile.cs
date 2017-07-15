@@ -4,18 +4,19 @@ using UnityEngine;
 
 public abstract class GridTile : Assets.Scripts.AbstractBeatable {
 
-    public int xPosInGrid;
-    public int zPosInGrid;
 
     private GridMaster gridMaster;
 
     void Start()
     {
-        Debug.Log("GridTile::Start (" + xPosInGrid + "," + zPosInGrid + ")");
+        int iXPosInGrid = Mathf.FloorToInt(transform.position.x + 0.5f);
+        int iZPosInGrid = Mathf.FloorToInt(transform.position.z + 0.5f);
+
+        Debug.Log("GridTile::Start (" + iXPosInGrid + "," + iZPosInGrid + ")");
         GameObject gmGO = GameObject.FindWithTag("GridMaster");
         gridMaster = gmGO.GetComponent<GridMaster>();
 
-        gridMaster.RegisterTile(this, xPosInGrid, zPosInGrid);
+        gridMaster.RegisterTile(this, iXPosInGrid, iZPosInGrid);
     }
 
 	public abstract void OnDiscoPeteLanded(DiscoPeteBehaviour pete);
