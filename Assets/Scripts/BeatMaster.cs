@@ -18,7 +18,7 @@ public class BeatMaster : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		int beat = getBeatIndex(musicSource.time - beatOffset);
+		int beat = getBeatIndex(getCurrentTime());
 
 		if (beat > lastBeatIndex)
 		{
@@ -30,8 +30,24 @@ public class BeatMaster : MonoBehaviour
 		}
 	}
 
+    public bool allowsJump()
+    {
+        float fCurrentTimeBeat = getCurrentTime() * bps;
+        float fNearestBeat = Mathf.Floor(fCurrentTimeBeat + 0.5f);
+
+        float fDiff = Mathf.Abs(fCurrentTimeBeat - fNearestBeat);
+
+        return fDiff < 0.1f;
+    }
+
+
 	private int getBeatIndex(float time)
 	{
 		return Mathf.FloorToInt(time * bps);
 	}
+
+    private float getCurrentTime()
+    {
+        return musicSource.time - beatOffset;
+    }
 }
