@@ -32,7 +32,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 	private GameObject m_pPeteModel;
 
 	[SerializeField]
-	private ParticleSystem m_pDeathEffect;
+	private GameObject deathPrefab;
 
     // Use this for initialization
     void OnEnable()
@@ -111,7 +111,11 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
 			m_bAlive = false;
 			m_pPeteModel.SetActive(false);
-			m_pDeathEffect.Play();
+
+			if (deathPrefab != null)
+			{
+				Instantiate(deathPrefab, transform.position, Quaternion.identity);
+			}
 
 			if (m_pGUIMaster != null)
 				m_pGUIMaster.ShowText("YOU DIED!", "Press R to restart");
