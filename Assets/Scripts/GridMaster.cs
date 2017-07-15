@@ -22,14 +22,14 @@ public class GridMaster : MonoBehaviour {
                 tile.Reset();
     }
 
-    public void SetDiscoPeteToStart(GameObject pete)
+    public void SetDiscoPeteToStart()
     {
-        // find start tile
-        GameObject startGO = GameObject.FindWithTag("StartTile");
-        if (startGO != null)
+        GameObject discopete = GameObject.FindWithTag("DiscoPete");// find disco pete
+        GameObject startGO = GameObject.FindWithTag("StartTile");// find start tile
+        if (discopete != null && startGO != null)
         {
             Vector3 startposition = startGO.transform.position;
-            pete.transform.position = new Vector3(startposition.x, startposition.y + 0.5f, startposition.z);
+	        discopete.transform.position = new Vector3(startposition.x, startposition.y + 0.5f, startposition.z);
         }
 
     }

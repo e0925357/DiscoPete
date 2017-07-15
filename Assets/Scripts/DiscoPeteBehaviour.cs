@@ -18,10 +18,12 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     private bool m_bPrevKeyPressed = false;
 	private int m_iLockedBeat = -1;
     private int m_iLastJumpedBeat = -1;
+    private bool m_bAlive = true;
 
     private BeatMaster m_pBeatMaster;
     private GridMaster m_pGridMaster;
 	private Animator m_pAnimator;
+    private GUIMaster m_pGUIMaster;
 
     // Use this for initialization
     void OnEnable()
@@ -32,7 +34,11 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
         GameObject gmGO = GameObject.FindWithTag("GridMaster");
         m_pGridMaster = gmGO.GetComponent<GridMaster>();
-        m_pGridMaster.SetDiscoPeteToStart(this.gameObject);
+        m_pGridMaster.SetDiscoPeteToStart();
+
+        GameObject guiGO = GameObject.FindWithTag("GUIMaster");
+        if(guiGO != null)
+            m_pGUIMaster = guiGO.GetComponent<GUIMaster>();
 
         m_pBeatMaster.beatEvent += BeatMasterOnBeatEvent;
         m_pBeatMaster.onJumpChancePassedEvent += BeatMasterOnJumpChancePassedEvent;
@@ -53,8 +59,25 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        ItlUpdateDirection();
-        ItlMovePete();
+        if(m_bAlive)
+        {
+            ItlUpdateDirection();
+            ItlMovePete();
+        }
+        else
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                m_bAlive = true;
+
+                if(m_pGUIMaster != null)
+                    m_pGUIMaster.HideText();
+
+
+                m_pGridMaster.Reset();
+                m_pGridMaster.SetDiscoPeteToStart();
+            }
+        }
 	}
 
     public void Say(string text)
@@ -66,8 +89,10 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     {
         Debug.Log("DISCOPETE IS DEAD!");
 
-        m_pGridMaster.Reset();
-        m_pGridMaster.SetDiscoPeteToStart(this.gameObject);
+        m_bAlive = false;
+
+        if(m_pGUIMaster != null)
+            m_pGUIMaster.ShowText("YOU DIED!", "Press R to restart");
     }
 
     private void BeatMasterOnBeatEvent()
