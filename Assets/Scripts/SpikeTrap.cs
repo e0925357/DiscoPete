@@ -14,8 +14,10 @@ namespace Assets.Scripts
 		{
 			base.Start();
 			animator = GetComponent<Animator>();
-			animator.SetFloat(SPEED, beatMaster.songInfo.Bps);
+            if(animator == null)
                 animator = GetComponentInChildren<Animator>();
+
+            animator.SetFloat(SPEED, beatMaster.songInfo.Bps);
 		}
 
 		protected override bool Active
