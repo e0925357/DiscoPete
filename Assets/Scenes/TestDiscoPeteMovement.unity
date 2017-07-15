@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b47470a49995fa42bb34a396418107a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discoColors: {fileID: 11400000, guid: fb0dabfbe4815244bbf9c481674c8ac7, type: 2}
 --- !u!23 &90327146
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -232,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b47470a49995fa42bb34a396418107a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discoColors: {fileID: 11400000, guid: fb0dabfbe4815244bbf9c481674c8ac7, type: 2}
 --- !u!23 &106496935
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -326,6 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b47470a49995fa42bb34a396418107a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discoColors: {fileID: 11400000, guid: fb0dabfbe4815244bbf9c481674c8ac7, type: 2}
 --- !u!23 &238310160
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -514,7 +517,7 @@ MonoBehaviour:
   musicSource: {fileID: 441166418}
   beatOffset: 0.024
   bps: 1.95
-  maxBeatDiff: 0.1
+  maxBeatDiff: 0.2
 --- !u!1 &495617139
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b47470a49995fa42bb34a396418107a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discoColors: {fileID: 11400000, guid: fb0dabfbe4815244bbf9c481674c8ac7, type: 2}
 --- !u!23 &495617141
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -623,7 +627,7 @@ GameObject:
   - component: {fileID: 799655249}
   m_Layer: 0
   m_Name: DiscoPete
-  m_TagString: Untagged
+  m_TagString: DiscoPete
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -970,6 +974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b47470a49995fa42bb34a396418107a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discoColors: {fileID: 11400000, guid: fb0dabfbe4815244bbf9c481674c8ac7, type: 2}
 --- !u!23 &1649082192
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1064,6 +1069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b47470a49995fa42bb34a396418107a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discoColors: {fileID: 11400000, guid: fb0dabfbe4815244bbf9c481674c8ac7, type: 2}
 --- !u!23 &1787999679
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1158,6 +1164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b47470a49995fa42bb34a396418107a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discoColors: {fileID: 11400000, guid: fb0dabfbe4815244bbf9c481674c8ac7, type: 2}
 --- !u!23 &1896315124
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1234,6 +1241,7 @@ GameObject:
   - component: {fileID: 1922620346}
   - component: {fileID: 1922620345}
   - component: {fileID: 1922620344}
+  - component: {fileID: 1922620349}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1311,6 +1319,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 33.505, y: 0, z: 0}
+--- !u!114 &1922620349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1922620343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8677abcad891e447816d35ad04544f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1979501159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,6 +1360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b47470a49995fa42bb34a396418107a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discoColors: {fileID: 11400000, guid: fb0dabfbe4815244bbf9c481674c8ac7, type: 2}
 --- !u!23 &1979501161
 MeshRenderer:
   m_ObjectHideFlags: 0

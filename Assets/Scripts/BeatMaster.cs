@@ -8,14 +8,17 @@ public class BeatMaster : MonoBehaviour
 	public delegate void BeatDelegate();
 
 	public event BeatDelegate beatEvent;
+    public event BeatDelegate onJumpChancePassedEvent;
 
 	public AudioSource musicSource;
 	public float beatOffset;
 	public float bps;
 
-    public float maxBeatDiff = 0.1f;
+    public float maxBeatDiff = 0.2f;
 
 	private int lastBeatIndex = -1;
+
+    private bool prevAllowsJump = false;
 	
 	// Update is called once per frame
 	void Update ()
@@ -30,6 +33,18 @@ public class BeatMaster : MonoBehaviour
 				beatEvent();
 			}
 		}
+
+        bool bAllowsJump = allowsJump();
+
+        if(prevAllowsJump == true && bAllowsJump == false)
+        {
+            if(onJumpChancePassedEvent != null)
+            {
+                onJumpChancePassedEvent();
+            }
+        }
+
+        prevAllowsJump = bAllowsJump;
 	}
 
     public bool allowsJump()
