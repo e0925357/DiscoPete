@@ -12,7 +12,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     private float m_fMoved = 0.0f;
     private float m_fSpeed = 7.0f;
     private bool m_bPrevKeyPressed = false;
-
+	private int m_iLockedBeat = -1;
 
     private BeatMaster m_pBeatMaster;
     private GridMaster m_pGridMaster;
@@ -56,9 +56,12 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     {
         DIR eCurrDir = ItlGetDirFromInput();
 
-        if(m_eDir == DIR.IDLE && !m_bPrevKeyPressed && m_pBeatMaster.allowsJump())
+        if(m_eDir == DIR.IDLE && eCurrDir != DIR.IDLE && !m_bPrevKeyPressed)
         {
-            m_eDir = eCurrDir;
+	        if (m_pBeatMaster.allowsJump())
+	        {
+		        if (m_iLockedBeat != m_pBeatMaster.NearestBeat)
+			        m_eDir = eCurrDir;
 
             if(m_eDir != DIR.IDLE)
             {
@@ -68,6 +71,11 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             {
                 m_pGridMaster.OnDiscoPeteStaysOnTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
             }*/
+	        }
+	        else
+	        {
+		        m_iLockedBeat = m_pBeatMaster.NextBeat;
+	        }
         }
 
         m_bPrevKeyPressed = (eCurrDir != DIR.IDLE);
@@ -126,22 +134,22 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         float fHorizontal = Input.GetAxisRaw("Horizontal");
         float fVertical = Input.GetAxisRaw("Vertical");
 
-        if (fHorizontal > 0)
+        if (fHorizontal > Mathf.Epsilon)
         {
             //Debug.Log("DIR.RIGHT");
             eDir = DIR.RIGHT;
         }
-        else if (fHorizontal < 0)
+        else if (fHorizontal < -Mathf.Epsilon)
         {
             //Debug.Log("DIR.LEFT");
             eDir = DIR.LEFT;
         }
-        else if (fVertical > 0)
+        else if (fVertical > Mathf.Epsilon)
         {
             //Debug.Log("DIR.UP");
             eDir = DIR.UP;
         }
-        else if (fVertical < 0)
+        else if (fVertical < -Mathf.Epsilon)
         {
             //Debug.Log("DIR.DOWN");
             eDir = DIR.DOWN;
