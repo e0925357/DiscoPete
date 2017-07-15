@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e01f0001ab36b704293ad488b7dd3561
-timeCreated: 1500057469
+guid: 61f37cf6b0f11e0428244aefdab7eeb3
+timeCreated: 1500104385
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -10,8 +10,6 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: DiscoTile
-    7400000: Default Take
-    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
