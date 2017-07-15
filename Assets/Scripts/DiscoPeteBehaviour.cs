@@ -14,6 +14,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     private bool m_bPrevKeyPressed = false;
 	private int m_iLockedBeat = -1;
     private int m_iLastJumpedBeat = -1;
+    private bool m_bAlive = true;
 
     private BeatMaster m_pBeatMaster;
     private GridMaster m_pGridMaster;
@@ -27,7 +28,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
         GameObject gmGO = GameObject.FindWithTag("GridMaster");
         m_pGridMaster = gmGO.GetComponent<GridMaster>();
-        m_pGridMaster.SetDiscoPeteToStart(this.gameObject);
+        m_pGridMaster.SetDiscoPeteToStart();
 
         m_pBeatMaster.beatEvent += BeatMasterOnBeatEvent;
         m_pBeatMaster.onJumpChancePassedEvent += BeatMasterOnJumpChancePassedEvent;
@@ -45,8 +46,20 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        ItlUpdateDirection();
-        ItlMovePete();
+        if(m_bAlive)
+        {
+            ItlUpdateDirection();
+            ItlMovePete();
+        }
+        else
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                m_bAlive = true;
+                m_pGridMaster.Reset();
+                m_pGridMaster.SetDiscoPeteToStart();
+            }
+        }
 	}
 
     public void Say(string text)
@@ -58,8 +71,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     {
         Debug.Log("DISCOPETE IS DEAD!");
 
-        m_pGridMaster.Reset();
-        m_pGridMaster.SetDiscoPeteToStart(this.gameObject);
+        m_bAlive = false;
     }
 
     private void BeatMasterOnBeatEvent()
@@ -74,6 +86,14 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             //Debug.Log("# STAY");
 
             m_pGridMaster.OnDiscoPeteStaysOnTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
+        }
+    }
+
+    private void OnGUI()
+    {
+        if(m_bAlive == false)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 50.0f, Screen.height / 2 - 50.0f, 400f, 400f), "YOU ARE DEAD!\n\nPress R to restart");
         }
     }
 
