@@ -10,9 +10,11 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
 	public static readonly int JUMP = Animator.StringToHash("Jump");
 	public static readonly int JUMP_DURATION = Animator.StringToHash("JumpDuration");
+	public static readonly int SPEED = Animator.StringToHash("Speed");
+	public static readonly int BEAT = Animator.StringToHash("Beat");
 
-    // Privates
-    private DIR m_eDir = DIR.IDLE;
+	// Privates
+	private DIR m_eDir = DIR.IDLE;
     private float m_fMoved = 0.0f;
     private float m_fSpeed = 7.0f;
     private bool m_bPrevKeyPressed = false;
@@ -52,6 +54,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
 	    m_pAnimator = GetComponent<Animator>();
 		m_pAnimator.SetFloat(JUMP_DURATION, m_fSpeed);
+		m_pAnimator.SetFloat(SPEED, m_pBeatMaster.songInfo.Bps);
     }
 
     void OnDisable()
@@ -126,8 +129,8 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
     private void BeatMasterOnBeatEvent()
     {
-
-    }
+	    m_pAnimator.SetBool(BEAT, true);
+	}
 
     private void BeatMasterOnJumpChancePassedEvent()
     {
@@ -137,6 +140,8 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
             m_pGridMaster.OnDiscoPeteStaysOnTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
         }
+
+		m_pAnimator.SetBool(BEAT, false);
     }
 
     private void ItlUpdateDirection()
