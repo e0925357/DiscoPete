@@ -17,7 +17,13 @@ public class NormalTile : GridTile {
 		SetDiscoColor(discoColors.DiscoColors[index]);
 	}
 
-	public override void OnDiscoPeteLanded(DiscoPeteBehaviour pete)
+    public override void Reset()
+    {
+        base.Reset();
+        m_iLifeOfTile = 3;
+    }
+
+    public override void OnDiscoPeteLanded(DiscoPeteBehaviour pete)
     {
         pete.Say("Landed on tile! Tile state: " + m_iLifeOfTile);
     }

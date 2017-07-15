@@ -55,6 +55,8 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     public void Die()
     {
         Debug.Log("DISCOPETE IS DEAD!");
+
+        m_pGridMaster.Reset();
     }
 
     private void BeatMasterOnBeatEvent()
