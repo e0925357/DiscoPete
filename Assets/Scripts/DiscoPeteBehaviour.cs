@@ -29,8 +29,8 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     {
         if(eDir == DIR.IDLE)
         {
-            float fHorizontal = Input.GetAxis("Horizontal");
-            float fVertical = Input.GetAxis("Vertical");
+            float fHorizontal = Input.GetAxisRaw("Horizontal");
+            float fVertical = Input.GetAxisRaw("Vertical");
 
 //            animator.SetTrigger("JUMP");
 
