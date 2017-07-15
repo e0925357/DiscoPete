@@ -22,6 +22,18 @@ public class GridMaster : MonoBehaviour {
                 tile.Reset();
     }
 
+    public void SetDiscoPeteToStart(GameObject pete)
+    {
+        // find start tile
+        StartTile start = GetComponentInChildren<StartTile>();
+        if (start != null)
+        {
+            Vector3 startposition = start.transform.position;
+            pete.transform.position = new Vector3(startposition.x, startposition.y + 1, startposition.z);
+        }
+
+    }
+
     public void RegisterTile(GridTile tile, int x, int z)
     {
         Debug.Log("Registering tile " + tile);
