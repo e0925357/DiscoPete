@@ -1,10 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts;
 using UnityEngine;
 
 public class NormalTile : GridTile {
 
-    private int m_iLifeOfTile = 3;
+	[SerializeField]
+	private DiscoColorsProfile discoColors = null;
+	private int m_iLifeOfTile = 3;
+
+	// Use this for initialization
+	protected override void Start()
+	{
+		base.Start();
+		int index = UnityEngine.Random.Range(0, discoColors.DiscoColors.Length - 1);
+		SetDiscoColor(discoColors.DiscoColors[index]);
+	}
 
 	public override void OnDiscoPeteLanded(DiscoPeteBehaviour pete)
     {
@@ -36,8 +47,16 @@ public class NormalTile : GridTile {
         }
     }
 
-    protected override void OnBeat()
-    {
+	void SetDiscoColor(Color color)
+	{
+		Material[] mats = GetComponentInChildren<Renderer>().materials;
+		mats[Mathf.Min(1, mats.Length-1)].SetColor("_Color", color);
+		mats[Mathf.Min(1, mats.Length - 1)].SetColor("_EmissionColor", color);
+	}
 
-    }
+	protected override void OnBeat()
+	{
+		int index = UnityEngine.Random.Range(0, discoColors.DiscoColors.Length - 1);
+		SetDiscoColor(discoColors.DiscoColors[index]);
+	}
 }
