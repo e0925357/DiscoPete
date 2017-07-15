@@ -8,6 +8,7 @@ public abstract class GridTile : Assets.Scripts.AbstractBeatable {
     private GridMaster gridMaster;
     private int m_iXPosInGrid;
     private int m_iZPosInGrid;
+	private Vector3 initPos;
 
     private bool m_bDestroyed = false;
 
@@ -15,6 +16,7 @@ public abstract class GridTile : Assets.Scripts.AbstractBeatable {
     {
         m_iXPosInGrid = Mathf.FloorToInt(transform.position.x + 0.5f);
         m_iZPosInGrid = Mathf.FloorToInt(transform.position.z + 0.5f);
+	    initPos = transform.position;
 
         Debug.Log("GridTile::Start (" + m_iXPosInGrid + "," + m_iZPosInGrid + ")");
         GameObject gmGO = GameObject.FindWithTag("GridMaster");
@@ -33,7 +35,7 @@ public abstract class GridTile : Assets.Scripts.AbstractBeatable {
 
     public virtual void Reset()
     {
-        transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
+	    transform.position = initPos;
         m_bDestroyed = false;
     }
 

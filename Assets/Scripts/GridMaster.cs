@@ -29,7 +29,7 @@ public class GridMaster : MonoBehaviour {
         if (startGO != null)
         {
             Vector3 startposition = startGO.transform.position;
-            pete.transform.position = new Vector3(startposition.x, startposition.y + 1, startposition.z);
+            pete.transform.position = new Vector3(startposition.x, startposition.y + 0.5f, startposition.z);
         }
 
     }

@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class DiscoPeteBehaviour : MonoBehaviour {
 
     // Types
     enum DIR { IDLE, UP, DOWN, LEFT, RIGHT}
+
+	public static readonly int JUMP = Animator.StringToHash("Jump");
+	public static readonly int JUMP_DURATION = Animator.StringToHash("JumpDuration");
 
     // Privates
     private DIR m_eDir = DIR.IDLE;
@@ -17,6 +21,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
     private BeatMaster m_pBeatMaster;
     private GridMaster m_pGridMaster;
+	private Animator m_pAnimator;
 
     // Use this for initialization
     void OnEnable()
@@ -31,6 +36,9 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
         m_pBeatMaster.beatEvent += BeatMasterOnBeatEvent;
         m_pBeatMaster.onJumpChancePassedEvent += BeatMasterOnJumpChancePassedEvent;
+
+	    m_pAnimator = GetComponent<Animator>();
+		m_pAnimator.SetFloat(JUMP_DURATION, m_fSpeed);
     }
 
     void OnDisable()
@@ -91,6 +99,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
                 if (m_iLockedBeat != m_pBeatMaster.NearestBeat) // check if movement is not locked
                 {
                     Debug.Log("--- JUMP BEGIN");
+					m_pAnimator.SetTrigger(JUMP);
                     m_eDir = eCurrDir; // change direction
                     m_iLastJumpedBeat = m_pBeatMaster.NearestBeat; // set last beat where pete jumped
                     ItlSetRotationFromDir(); // apply the rotation corresponding to the current direction
