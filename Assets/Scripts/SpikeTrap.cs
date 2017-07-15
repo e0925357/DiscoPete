@@ -19,7 +19,15 @@ namespace Assets.Scripts
 		{
 			if (Active)
 			{
-				pete.Say("I'm dead!");
+				pete.Die();
+			}
+		}
+
+		public override void OnDiscoPeteStays(DiscoPeteBehaviour pete)
+		{
+			if (Active)
+			{
+				pete.Die();
 			}
 		}
 
