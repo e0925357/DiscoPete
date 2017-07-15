@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d43f14924f1aae41a6e85c2eb422802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  registerInGrid: 0
   activeTime: 2
   inactiveTime: 3
   startOffset: 0

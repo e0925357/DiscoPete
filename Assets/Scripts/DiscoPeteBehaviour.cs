@@ -107,6 +107,8 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     {
 		if (m_bAlive)
 		{
+            m_eDir = DIR.IDLE;
+            m_fMoved = 0.0f;
 			Debug.Log("DISCOPETE IS DEAD!");
 
 			m_bAlive = false;
@@ -124,6 +126,8 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
     public void Wins()
     {
+        m_eDir = DIR.IDLE;
+        m_fMoved = 0.0f;
         Debug.Log("YOU HAVE WON!");
         m_bWon = true;
 
