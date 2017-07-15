@@ -13,4 +13,9 @@ public class NormalTile : GridTile {
 
         transform.localScale += new Vector3(0.0f, -0.33f, 0.0f);
     }
+
+    protected override void OnBeat()
+    {
+
+    }
 }

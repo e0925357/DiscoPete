@@ -13,6 +13,8 @@ public class BeatMaster : MonoBehaviour
 	public float beatOffset;
 	public float bps;
 
+    public float maxBeatDiff = 0.2f;
+
 	private int lastBeatIndex = -1;
 	
 	// Update is called once per frame
@@ -37,7 +39,7 @@ public class BeatMaster : MonoBehaviour
 
         float fDiff = Mathf.Abs(fCurrentTimeBeat - fNearestBeat);
 
-        return fDiff < 0.2f;
+        return fDiff < maxBeatDiff;
     }
 
 

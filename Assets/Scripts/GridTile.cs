@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class GridTile : MonoBehaviour {
+public abstract class GridTile : Assets.Scripts.AbstractBeatable {
 
     public int xPosInGrid;
     public int zPosInGrid;
