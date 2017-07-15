@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraBehaviour : MonoBehaviour {
 
+	public Vector3 camOffset = new Vector3(0, 5, -5);
     private GameObject m_pDiscoPete;
 
 	// Use this for initialization
@@ -20,6 +21,6 @@ public class CameraBehaviour : MonoBehaviour {
         // Take the x of disco pete
         // Take the z of disco pete minus some offset
         // Y remains fixed
-        gameObject.transform.position = new Vector3(vPositionOfDiscoPete.x, 5.0f, vPositionOfDiscoPete.z - 5.0f);
+        gameObject.transform.position = new Vector3(vPositionOfDiscoPete.x, 0f, vPositionOfDiscoPete.z) + camOffset;
 	}
 }

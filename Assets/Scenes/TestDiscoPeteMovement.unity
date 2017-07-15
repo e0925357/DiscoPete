@@ -515,7 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songInfo: {fileID: 11400000, guid: 68c123a858bc6994f82519e7cf017a21, type: 2}
-  maxBeatDiff: 0.2
+  maxBeatDiff: 0.15
 --- !u!1001 &490825519
 Prefab:
   m_ObjectHideFlags: 0
@@ -554,6 +554,10 @@ Prefab:
     - target: {fileID: 4644732686540266, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644732686540266, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0cc609e601074a74db28447f7525ce24, type: 2}
