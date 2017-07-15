@@ -4,7 +4,7 @@ namespace Assets.Scripts
 {
 	public abstract class AbstractBeatable : MonoBehaviour
 	{
-		private BeatMaster beatMaster;
+		protected BeatMaster beatMaster;
 
 		protected virtual void OnEnable()
 		{

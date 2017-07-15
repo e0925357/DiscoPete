@@ -5,6 +5,7 @@ namespace Assets.Scripts
 	public class SpikeTrap : AbstractTrap
 	{
 		private static readonly int ACTIVE = Animator.StringToHash("Active");
+		private static readonly int SPEED = Animator.StringToHash("Speed");
 
 		private bool active = false;
 		private Animator animator;
@@ -13,6 +14,7 @@ namespace Assets.Scripts
 		{
 			base.Start();
 			animator = GetComponent<Animator>();
+			animator.SetFloat(SPEED, beatMaster.songInfo.Bps);
 		}
 
 		protected override bool Active
