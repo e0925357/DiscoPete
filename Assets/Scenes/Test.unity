@@ -633,8 +633,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 441166419}
-  - component: {fileID: 441166418}
   - component: {fileID: 441166420}
+  - component: {fileID: 441166418}
   m_Layer: 0
   m_Name: Music
   m_TagString: Music
@@ -651,8 +651,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 90e7b620fd77502489691009283b0601, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -746,9 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702006061cb27d84398a0269852e1a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSource: {fileID: 441166418}
-  beatOffset: 0.024
-  bps: 1.95
+  songInfo: {fileID: 11400000, guid: 49be092c55cc32e48b05d5bc3f6ae0e7, type: 2}
   maxBeatDiff: 0.2
 --- !u!1001 &608939537
 Prefab:
