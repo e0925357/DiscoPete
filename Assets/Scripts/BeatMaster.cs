@@ -10,14 +10,16 @@ public class BeatMaster : MonoBehaviour
 	public delegate void BeatDelegate();
 
 	public event BeatDelegate beatEvent;
+    public event BeatDelegate onJumpChancePassedEvent;
 
 	private AudioSource musicSource;
 	public SongInfo songInfo;
 
-    public float maxBeatDiff = 0.1f;
+    public float maxBeatDiff = 0.2f;
 
 	private int lastBeatIndex = -1;
-
+	private bool prevAllowsJump = false;
+	
 	void Awake()
 	{
 		musicSource = GetComponent<AudioSource>();
@@ -38,6 +40,18 @@ public class BeatMaster : MonoBehaviour
 				beatEvent();
 			}
 		}
+
+        bool bAllowsJump = allowsJump();
+
+        if(prevAllowsJump == true && bAllowsJump == false)
+        {
+            if(onJumpChancePassedEvent != null)
+            {
+                onJumpChancePassedEvent();
+            }
+        }
+
+        prevAllowsJump = bAllowsJump;
 	}
 
     public bool allowsJump()

@@ -15,6 +15,25 @@ public class GridMaster : MonoBehaviour {
         m_pGridTiles = new GridTile[gridSizeX, gridSizeZ];
     }
 
+    public void Reset()
+    {
+        foreach(GridTile tile in m_pGridTiles)
+            if(tile != null)
+                tile.Reset();
+    }
+
+    public void SetDiscoPeteToStart(GameObject pete)
+    {
+        // find start tile
+        StartTile start = GetComponentInChildren<StartTile>();
+        if (start != null)
+        {
+            Vector3 startposition = start.transform.position;
+            pete.transform.position = new Vector3(startposition.x, startposition.y + 1, startposition.z);
+        }
+
+    }
+
     public void RegisterTile(GridTile tile, int x, int z)
     {
         Debug.Log("Registering tile " + tile);
@@ -29,7 +48,7 @@ public class GridMaster : MonoBehaviour {
 	public void OnDiscoPeteLanded(DiscoPeteBehaviour pete, int x, int z)
     {
         GridTile tile = ItlGetTileFromPos(x, z);
-        if (tile != null)
+        if (tile != null && (tile.IsDestroyed() == false))
             tile.OnDiscoPeteLanded(pete);
         else
             pete.Die();
@@ -38,7 +57,7 @@ public class GridMaster : MonoBehaviour {
     public void OnDiscoPeteStaysOnTile(DiscoPeteBehaviour pete, int x, int z)
     {
         GridTile tile = ItlGetTileFromPos(x, z);
-        if (tile != null)
+        if (tile != null && (tile.IsDestroyed() == false))
             tile.OnDiscoPeteStays(pete);
         else
             pete.Die();
@@ -47,7 +66,7 @@ public class GridMaster : MonoBehaviour {
     public void OnDiscoPeteLeavesTile(DiscoPeteBehaviour pete, int x, int z)
     {
         GridTile tile = ItlGetTileFromPos(x, z);
-        if (tile != null)
+        if (tile != null && (tile.IsDestroyed() == false))
             tile.OnDiscoPeteLeaves(pete);
         else
             pete.Die();

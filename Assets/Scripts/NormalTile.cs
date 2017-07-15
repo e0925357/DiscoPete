@@ -17,17 +17,24 @@ public class NormalTile : GridTile {
 		SetDiscoColor(discoColors.DiscoColors[index]);
 	}
 
-	public override void OnDiscoPeteLanded(DiscoPeteBehaviour pete)
+    public override void Reset()
+    {
+        base.Reset();
+        m_iLifeOfTile = 3;
+    }
+
+    public override void OnDiscoPeteLanded(DiscoPeteBehaviour pete)
     {
         pete.Say("Landed on tile! Tile state: " + m_iLifeOfTile);
     }
 
     public override void OnDiscoPeteLeaves(DiscoPeteBehaviour pete)
     {
+        Debug.Log("Disco Pete leaves tile!");
         m_iLifeOfTile--;
 
         if (m_iLifeOfTile > 0)
-            transform.localScale += new Vector3(0.0f, -0.25f, 0.0f);
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
         else
         {
             DestroyTile();
@@ -36,11 +43,15 @@ public class NormalTile : GridTile {
 
     public override void OnDiscoPeteStays(DiscoPeteBehaviour pete)
     {
+        Debug.Log("Disco Pete stays on tile!");
         m_iLifeOfTile--;
 
-        transform.localScale += new Vector3(0.0f, -0.33f, 0.0f);
 
-        if (m_iLifeOfTile == 0)
+        if(m_iLifeOfTile > 0)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z);
+        }
+        else if (m_iLifeOfTile == 0)
         {
             DestroyTile();
             pete.Die();
