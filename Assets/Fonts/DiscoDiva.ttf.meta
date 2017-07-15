@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0e2aa7ed7806755488898a77b24ce234
+timeCreated: 1500129852
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Disco Diva
+  fontNames:
+  - Disco Diva
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

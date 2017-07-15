@@ -18,6 +18,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
     private BeatMaster m_pBeatMaster;
     private GridMaster m_pGridMaster;
+    private GUIMaster m_pGUIMaster;
 
     // Use this for initialization
     void OnEnable()
@@ -29,6 +30,10 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         GameObject gmGO = GameObject.FindWithTag("GridMaster");
         m_pGridMaster = gmGO.GetComponent<GridMaster>();
         m_pGridMaster.SetDiscoPeteToStart();
+
+        GameObject guiGO = GameObject.FindWithTag("GUIMaster");
+        if(guiGO != null)
+            m_pGUIMaster = guiGO.GetComponent<GUIMaster>();
 
         m_pBeatMaster.beatEvent += BeatMasterOnBeatEvent;
         m_pBeatMaster.onJumpChancePassedEvent += BeatMasterOnJumpChancePassedEvent;
@@ -56,6 +61,11 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             if(Input.GetKeyDown(KeyCode.R))
             {
                 m_bAlive = true;
+
+                if(m_pGUIMaster != null)
+                    m_pGUIMaster.HideText();
+
+
                 m_pGridMaster.Reset();
                 m_pGridMaster.SetDiscoPeteToStart();
             }
@@ -72,6 +82,9 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         Debug.Log("DISCOPETE IS DEAD!");
 
         m_bAlive = false;
+
+        if(m_pGUIMaster != null)
+            m_pGUIMaster.ShowText("YOU DIED!", "Press R to restart");
     }
 
     private void BeatMasterOnBeatEvent()
@@ -86,14 +99,6 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             //Debug.Log("# STAY");
 
             m_pGridMaster.OnDiscoPeteStaysOnTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
-        }
-    }
-
-    private void OnGUI()
-    {
-        if(m_bAlive == false)
-        {
-            GUI.Label(new Rect(Screen.width / 2 - 50.0f, Screen.height / 2 - 50.0f, 400f, 400f), "YOU ARE DEAD!\n\nPress R to restart");
         }
     }
 

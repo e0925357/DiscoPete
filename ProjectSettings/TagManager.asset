@@ -9,6 +9,9 @@ TagManager:
   - DiscoPete
   - StartTile
   - EndTile
+  - TextLine1
+  - TextLine2
+  - GUIMaster
   layers:
   - Default
   - TransparentFX

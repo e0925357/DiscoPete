@@ -2,16 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndTile : SafeTile {
+public class EndTile : SafeTile
+{
 
     private bool m_bWon = false;
     private GridMaster m_pGridMaster;
+    private GUIMaster m_pGUIMaster;
 
     protected override void Start()
     {
         base.Start();
         GameObject gmGO = GameObject.FindWithTag("GridMaster");
         m_pGridMaster = gmGO.GetComponent<GridMaster>();
+
+        GameObject guiGO = GameObject.FindWithTag("GUIMaster");
+        if(guiGO != null)
+            m_pGUIMaster = guiGO.GetComponent<GUIMaster>();
     }
 
     protected override void Update()
@@ -22,6 +28,10 @@ public class EndTile : SafeTile {
             if (Input.GetKeyDown(KeyCode.R))
             {
                 m_bWon = false;
+
+                if(m_pGUIMaster != null)
+                    m_pGUIMaster.HideText();
+
                 m_pGridMaster.Reset();
                 m_pGridMaster.SetDiscoPeteToStart();
             }
@@ -32,15 +42,8 @@ public class EndTile : SafeTile {
     {
         Debug.Log("YOU HAVE WON!");
         m_bWon = true;
-    }
 
-   
-
-    private void OnGUI()
-    {
-        if (m_bWon)
-        {
-            GUI.Label(new Rect(Screen.width / 2 - 50.0f, Screen.height / 2 - 50.0f, 400f, 400f), "YOU HAVE WON!\n\nPress R to restart");
-        }
+        if(m_pGUIMaster != null)
+            m_pGUIMaster.ShowText("YOU WON!", "Press R to restart");
     }
 }
