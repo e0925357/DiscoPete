@@ -39,6 +39,8 @@ public class BeatMaster : MonoBehaviour
 
         float fDiff = Mathf.Abs(fCurrentTimeBeat - fNearestBeat);
 
+		//Debug.Log(string.Format("Beat diff: {0}", fDiff));
+
         return fDiff < maxBeatDiff;
     }
 
@@ -52,4 +54,13 @@ public class BeatMaster : MonoBehaviour
     {
         return musicSource.time - beatOffset;
     }
+
+	public int NearestBeat
+	{
+		get { return Mathf.RoundToInt(getCurrentTime() * bps); }
+	}
+
+	public int LastBeat { get { return lastBeatIndex; } }
+
+	public int NextBeat { get { return lastBeatIndex + 1; } }
 }
