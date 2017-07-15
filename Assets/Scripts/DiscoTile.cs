@@ -30,7 +30,7 @@ public class DiscoTile : MonoBehaviour {
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds(0.1f);
+			yield return new WaitForSeconds(1.0f);
 			int index = UnityEngine.Random.Range(0, discoColors.DiscoColors.Length - 1);
 			SetDiscoColor(discoColors.DiscoColors[index]);
 		}
