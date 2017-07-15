@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 341308453}
   m_Layer: 0
   m_Name: Directional light (1)
-  m_TagString: Untagged
+  m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1939,6 +1939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songInfo: {fileID: 11400000, guid: 49be092c55cc32e48b05d5bc3f6ae0e7, type: 2}
+  deactivateLightsSound: {fileID: 0}
   maxBeatDiff: 0.2
 --- !u!4 &1239836342
 Transform:

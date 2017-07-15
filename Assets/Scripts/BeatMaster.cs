@@ -1,7 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts;
 using UnityEngine;
+
+struct GameObjectPriorityPair
+{
+	public GameObject go;
+	public int priority;
+}
 
 [RequireComponent(typeof(AudioSource))]
 public class BeatMaster : MonoBehaviour
@@ -14,6 +21,7 @@ public class BeatMaster : MonoBehaviour
 
 	private AudioSource musicSource;
 	public SongInfo songInfo;
+	public AudioSource deactivateLightsSound;
 
     public float maxBeatDiff = 0.2f;
 
@@ -25,6 +33,74 @@ public class BeatMaster : MonoBehaviour
 		musicSource = GetComponent<AudioSource>();
 		musicSource.clip = songInfo.song;
 		musicSource.Play();
+
+		StartCoroutine(handleSongEnd());
+	}
+
+	IEnumerator handleSongEnd()
+	{
+		yield return new WaitForSeconds(musicSource.clip.length + 2f);
+
+		//TODO: display end message
+
+		GameObject[] emissiveObjects = GameObject.FindGameObjectsWithTag("Emissive");
+		GameObjectPriorityPair[] goPairs = new GameObjectPriorityPair[emissiveObjects.Length];
+
+		int numGroups = Mathf.Max(2, emissiveObjects.Length / 10);
+
+		for (int i = 0; i < emissiveObjects.Length; ++i)
+		{
+			goPairs[i].go = emissiveObjects[i];
+			goPairs[i].priority = Random.Range(0, numGroups);
+		}
+
+		goPairs = goPairs.OrderBy(x => x.priority).ToArray();
+
+		int lastIndex = 0;
+
+		for (int p = 0; p < numGroups; ++p)
+		{
+			for (int i = lastIndex; i < goPairs.Length; ++i)
+			{
+				lastIndex = i;
+				if (goPairs[i].priority > p) break;
+
+				Renderer[] renderers = goPairs[i].go.GetComponentsInChildren<Renderer>();
+
+				for (int r = 0; r < renderers.Length; ++r)
+				{
+					Material[] materials = renderers[r].materials;
+					int matIndex = Mathf.Min(1, materials.Length-1);
+					
+					materials[matIndex].SetColor("_Color", Color.black);
+					materials[matIndex].SetColor("_EmissionColor", Color.black);
+				}
+			}
+
+			if (deactivateLightsSound)
+			{
+				deactivateLightsSound.Play();
+			}
+
+			if (p + 1 < numGroups)
+			{
+				yield return new WaitForSeconds(0.8f);
+			}
+			else
+			{
+				GameObject[] lightGos = GameObject.FindGameObjectsWithTag("Light");
+
+				for (int l = 0; l < lightGos.Length; ++l)
+				{
+					Light[] lights = lightGos[l].GetComponentsInChildren<Light>();
+
+					for (int ls = 0; ls < lights.Length; ++ls)
+					{
+						lights[ls].enabled = false;
+					}
+				}
+			}
+		}
 	}
 	
 	// Update is called once per frame

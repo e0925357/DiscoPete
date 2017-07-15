@@ -12,6 +12,8 @@ TagManager:
   - TextLine1
   - TextLine2
   - GUIMaster
+  - Emissive
+  - Light
   layers:
   - Default
   - TransparentFX
