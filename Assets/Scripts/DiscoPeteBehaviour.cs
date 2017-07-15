@@ -26,6 +26,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
         GameObject gmGO = GameObject.FindWithTag("GridMaster");
         m_pGridMaster = gmGO.GetComponent<GridMaster>();
+        m_pGridMaster.SetDiscoPeteToStart(this.gameObject);
 
         m_pBeatMaster.beatEvent += BeatMasterOnBeatEvent;
         m_pBeatMaster.onJumpChancePassedEvent += BeatMasterOnJumpChancePassedEvent;
@@ -57,6 +58,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         Debug.Log("DISCOPETE IS DEAD!");
 
         m_pGridMaster.Reset();
+        m_pGridMaster.SetDiscoPeteToStart(this.gameObject);
     }
 
     private void BeatMasterOnBeatEvent()
@@ -68,7 +70,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     {
         if(m_iLastJumpedBeat < m_pBeatMaster.NearestBeat)
         {
-            Debug.Log("# STAY");
+            //Debug.Log("# STAY");
 
             m_pGridMaster.OnDiscoPeteStaysOnTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
         }
