@@ -80,11 +80,14 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     {
         DIR eCurrDir = ItlGetDirFromInput();
 
-        if(m_eDir == DIR.IDLE && eCurrDir != DIR.IDLE && !m_bPrevKeyPressed)
+        if(m_eDir == DIR.IDLE && // currently idle
+            eCurrDir != DIR.IDLE && // want to jump
+            !m_bPrevKeyPressed && // jump only allowed if previously no key was pressed
+            m_pBeatMaster.NearestBeat > m_iLastJumpedBeat) // jump only allowed once per beat
         {
-            if (m_pBeatMaster.allowsJump())
+            if (m_pBeatMaster.allowsJump()) // Check if the beatmaster allows us to jump
             {
-                if (m_iLockedBeat != m_pBeatMaster.NearestBeat)
+                if (m_iLockedBeat != m_pBeatMaster.NearestBeat) // check if movement is not locked
                 {
                     Debug.Log("--- JUMP BEGIN");
                     m_eDir = eCurrDir;

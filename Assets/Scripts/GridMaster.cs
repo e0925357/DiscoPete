@@ -25,10 +25,10 @@ public class GridMaster : MonoBehaviour {
     public void SetDiscoPeteToStart(GameObject pete)
     {
         // find start tile
-        StartTile start = GetComponentInChildren<StartTile>();
-        if (start != null)
+        GameObject startGO = GameObject.FindWithTag("StartTile");
+        if (startGO != null)
         {
-            Vector3 startposition = start.transform.position;
+            Vector3 startposition = startGO.transform.position;
             pete.transform.position = new Vector3(startposition.x, startposition.y + 1, startposition.z);
         }
 
