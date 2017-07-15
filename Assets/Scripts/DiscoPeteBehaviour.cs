@@ -15,6 +15,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 	private int m_iLockedBeat = -1;
     private int m_iLastJumpedBeat = -1;
     private bool m_bAlive = true;
+    private bool m_bWon = false;
 
     private BeatMaster m_pBeatMaster;
     private GridMaster m_pGridMaster;
@@ -51,7 +52,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if(m_bAlive)
+        if(m_bAlive && !m_bWon)
         {
             ItlUpdateDirection();
             ItlMovePete();
@@ -61,10 +62,10 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             if(Input.GetKeyDown(KeyCode.R))
             {
                 m_bAlive = true;
+                m_bWon = false;
 
                 if(m_pGUIMaster != null)
                     m_pGUIMaster.HideText();
-
 
                 m_pGridMaster.Reset();
                 m_pGridMaster.SetDiscoPeteToStart();
@@ -85,6 +86,15 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
         if(m_pGUIMaster != null)
             m_pGUIMaster.ShowText("YOU DIED!", "Press R to restart");
+    }
+
+    public void Wins()
+    {
+        Debug.Log("YOU HAVE WON!");
+        m_bWon = true;
+
+        if (m_pGUIMaster != null)
+            m_pGUIMaster.ShowText("YOU WON!", "Press R to restart");
     }
 
     private void BeatMasterOnBeatEvent()
