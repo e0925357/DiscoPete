@@ -47,21 +47,35 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         Debug.Log("DISCOPETE says: " + text);
     }
 
+    public void Die()
+    {
+        Debug.Log("DISCOPETE IS DEAD!");
+    }
+
     private void ItlUpdateDirection()
     {
         DIR eCurrDir = ItlGetDirFromInput();
 
         if(m_eDir == DIR.IDLE && eCurrDir != DIR.IDLE && !m_bPrevKeyPressed)
         {
-	        if (m_pBeatMaster.allowsJump())
-	        {
-		        if (m_iLockedBeat != m_pBeatMaster.NearestBeat)
-			        m_eDir = eCurrDir;
-	        }
-	        else
-	        {
-		        m_iLockedBeat = m_pBeatMaster.NextBeat;
-	        }
+            if (m_pBeatMaster.allowsJump())
+            {
+                if (m_iLockedBeat != m_pBeatMaster.NearestBeat)
+                    m_eDir = eCurrDir;
+            }
+            else
+            {
+                m_iLockedBeat = m_pBeatMaster.NextBeat;
+            }
+
+            if (m_eDir != DIR.IDLE)
+            {
+                m_pGridMaster.OnDiscoPeteLeavesTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
+            }
+            /*else
+            {
+                m_pGridMaster.OnDiscoPeteStaysOnTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
+            }*/
         }
 
         m_bPrevKeyPressed = (eCurrDir != DIR.IDLE);

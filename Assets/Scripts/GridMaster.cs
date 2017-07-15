@@ -21,16 +21,47 @@ public class GridMaster : MonoBehaviour {
         m_pGridTiles[x, z] = tile;
     }
 
+    public void DeregisterTile(GridTile tile, int x, int z)
+    {
+        m_pGridTiles[x, z] = null;
+    }
+
 	public void OnDiscoPeteLanded(DiscoPeteBehaviour pete, int x, int z)
     {
-        if (x < 0 || x >= m_pGridTiles.GetLength(0))
-            Debug.Log("DISCO PETE IS OUTSIDE");
-        else if (z < 0 || z >= m_pGridTiles.GetLength(1))
-            Debug.Log("DISCO PETE IS OUTSIDE");
+        GridTile tile = ItlGetTileFromPos(x, z);
+        if (tile != null)
+            tile.OnDiscoPeteLanded(pete);
         else
+            pete.Die();
+    }
+
+    public void OnDiscoPeteStaysOnTile(DiscoPeteBehaviour pete, int x, int z)
+    {
+        GridTile tile = ItlGetTileFromPos(x, z);
+        if (tile != null)
+            tile.OnDiscoPeteStays(pete);
+        else
+            pete.Die();
+    }
+
+    public void OnDiscoPeteLeavesTile(DiscoPeteBehaviour pete, int x, int z)
+    {
+        GridTile tile = ItlGetTileFromPos(x, z);
+        if (tile != null)
+            tile.OnDiscoPeteLeaves(pete);
+        else
+            pete.Die();
+    }
+
+    private GridTile ItlGetTileFromPos(int x, int z)
+    {
+        if (x < 0 || x >= m_pGridTiles.GetLength(0) || z < 0 || z >= m_pGridTiles.GetLength(1))
         {
-            if (m_pGridTiles[x, z] != null)
-                m_pGridTiles[x, z].OnDiscoPeteLanded(pete);
+            return null;
+        }
+        else 
+        {
+            return m_pGridTiles[x, z];
         }
     }
 }
