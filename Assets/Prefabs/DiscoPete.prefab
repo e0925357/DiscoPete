@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4013703849031654}
   - component: {fileID: 33247996434611844}
   - component: {fileID: 23863373222422764}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DiscoPete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4715305534225242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,9 @@ GameObject:
   - component: {fileID: 4644732686540266}
   - component: {fileID: 114453235722577634}
   - component: {fileID: 95708435473383090}
-  m_Layer: 0
+  - component: {fileID: 135424862035684892}
+  - component: {fileID: 54643842393011090}
+  m_Layer: 9
   m_Name: DiscoPete
   m_TagString: DiscoPete
   m_Icon: {fileID: 0}
@@ -143,6 +145,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1370561747874384}
   m_Mesh: {fileID: 4300004, guid: 8f32c201d93f7c249903c18625a52569, type: 3}
+--- !u!54 &54643842393011090
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729921463742868}
+  serializedVersion: 2
+  m_Mass: 60
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95708435473383090
 Animator:
   serializedVersion: 3
@@ -171,3 +188,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7145468ff6fc845b22166cd66abaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &135424862035684892
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1729921463742868}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.32
+  m_Center: {x: 0, y: 0, z: 0}

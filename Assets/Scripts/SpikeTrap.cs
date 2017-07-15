@@ -15,22 +15,6 @@ namespace Assets.Scripts
 			animator = GetComponent<Animator>();
 		}
 
-		public override void OnDiscoPeteLanded(DiscoPeteBehaviour pete)
-		{
-			if (Active)
-			{
-				pete.Die();
-			}
-		}
-
-		public override void OnDiscoPeteStays(DiscoPeteBehaviour pete)
-		{
-			if (Active)
-			{
-				pete.Die();
-			}
-		}
-
 		protected override bool Active
 		{
 			get

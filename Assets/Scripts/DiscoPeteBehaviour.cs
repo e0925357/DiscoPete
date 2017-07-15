@@ -57,6 +57,12 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         }
     }
 
+	void OnTriggerEnter(Collider c)
+	{
+		if(m_bAlive)
+			Die();
+	}
+
     // Update is called once per frame
     void Update () {
 
