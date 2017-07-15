@@ -26,6 +26,12 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 	private Animator m_pAnimator;
     private GUIMaster m_pGUIMaster;
 
+	[SerializeField]
+	private GameObject m_pPeteModel;
+
+	[SerializeField]
+	private ParticleSystem m_pDeathEffect;
+
     // Use this for initialization
     void OnEnable()
     {
@@ -81,7 +87,9 @@ public class DiscoPeteBehaviour : MonoBehaviour {
                 if(m_pGUIMaster != null)
                     m_pGUIMaster.HideText();
 
-                m_pGridMaster.Reset();
+               
+				m_pPeteModel.SetActive(true);
+				m_pGridMaster.Reset();
                 m_pGridMaster.SetDiscoPeteToStart();
             }
         }
@@ -94,12 +102,17 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
     public void Die()
     {
-        Debug.Log("DISCOPETE IS DEAD!");
+		if (m_bAlive)
+		{
+			Debug.Log("DISCOPETE IS DEAD!");
 
-        m_bAlive = false;
+			m_bAlive = false;
+			m_pPeteModel.SetActive(false);
+			m_pDeathEffect.Play();
 
-        if(m_pGUIMaster != null)
-            m_pGUIMaster.ShowText("YOU DIED!", "Press R to restart");
+			if (m_pGUIMaster != null)
+				m_pGUIMaster.ShowText("YOU DIED!", "Press R to restart");
+		}
     }
 
     public void Wins()
