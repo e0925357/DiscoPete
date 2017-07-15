@@ -37,7 +37,7 @@ public class BeatMaster : MonoBehaviour
 
         float fDiff = Mathf.Abs(fCurrentTimeBeat - fNearestBeat);
 
-        return fDiff < 0.1f;
+        return fDiff < 0.2f;
     }
 
 

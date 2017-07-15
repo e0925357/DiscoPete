@@ -15,14 +15,16 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
 
     private BeatMaster m_pBeatMaster;
-  //  private Animator animator;
+    private GridMaster m_pGridMaster;
 
     // Use this for initialization
     void OnEnable()
     {
         GameObject bmGO = GameObject.FindWithTag("Music");
         m_pBeatMaster = bmGO.GetComponent<BeatMaster>();
-        //    animator = GetComponent<Animator>();
+
+        GameObject gmGO = GameObject.FindWithTag("GridMaster");
+        m_pGridMaster = gmGO.GetComponent<GridMaster>();
 
         m_pBeatMaster.beatEvent += BeatMasterOnBeatEvent;
     }
@@ -36,26 +38,28 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        UpdateDirection();
-        MovePete();
+        ItlUpdateDirection();
+        ItlMovePete();
 	}
 
-    void UpdateDirection()
+    public void Say(string text)
+    {
+        Debug.Log("DISCOPETE says: " + text);
+    }
+
+    private void ItlUpdateDirection()
     {
         DIR eCurrDir = ItlGetDirFromInput();
 
         if(m_eDir == DIR.IDLE && !m_bPrevKeyPressed && m_pBeatMaster.allowsJump())
         {
             m_eDir = eCurrDir;
-
-          //  if(eDir != DIR.IDLE)
-            //    animator.SetTrigger("JUMP");
         }
 
         m_bPrevKeyPressed = (eCurrDir != DIR.IDLE);
     }
 
-    void MovePete()
+    private void ItlMovePete()
     {
         if(m_eDir != DIR.IDLE)
         {
@@ -83,21 +87,22 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             m_fMoved += fDelta;
 
             // Jumping
-            transform.position = new Vector3(transform.position.x, Mathf.Sin(m_fMoved * Mathf.PI), transform.position.z);
+            transform.position = new Vector3(transform.position.x, Mathf.Sin(m_fMoved * Mathf.PI) + 0.5f, transform.position.z);
 
             if (m_fMoved >= 1.0f)
             {
                 m_fMoved = 0.0f;
-                transform.position = new Vector3(Mathf.Floor(transform.position.x + 0.5f), 0.0f, Mathf.Floor(transform.position.z + 0.5f));
+
+                transform.position = new Vector3(Mathf.Floor(transform.position.x + 0.5f), 0.5f, Mathf.Floor(transform.position.z + 0.5f));
                 m_eDir = DIR.IDLE;
+
+                m_pGridMaster.OnDiscoPeteLanded(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
             }
         }
     }
 
     private void BeatMasterOnBeatEvent()
     {
-        //print("DiscoPete Beat");
-       // animator.SetTrigger("BEAT");
     }
 
     private DIR ItlGetDirFromInput()
