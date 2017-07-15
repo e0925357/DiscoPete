@@ -13,6 +13,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     private float m_fSpeed = 7.0f;
     private bool m_bPrevKeyPressed = false;
 	private int m_iLockedBeat = -1;
+    private int m_iLastJumpedBeat = -1;
 
     private BeatMaster m_pBeatMaster;
     private GridMaster m_pGridMaster;
@@ -27,12 +28,16 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         m_pGridMaster = gmGO.GetComponent<GridMaster>();
 
         m_pBeatMaster.beatEvent += BeatMasterOnBeatEvent;
+        m_pBeatMaster.onJumpChancePassedEvent += BeatMasterOnJumpChancePassedEvent;
     }
 
     void OnDisable()
     {
         if (m_pBeatMaster != null)
+        {
             m_pBeatMaster.beatEvent -= BeatMasterOnBeatEvent;
+            m_pBeatMaster.onJumpChancePassedEvent -= BeatMasterOnJumpChancePassedEvent;
+        }
     }
 
     // Update is called once per frame
@@ -52,6 +57,21 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         Debug.Log("DISCOPETE IS DEAD!");
     }
 
+    private void BeatMasterOnBeatEvent()
+    {
+
+    }
+
+    private void BeatMasterOnJumpChancePassedEvent()
+    {
+        if(m_iLastJumpedBeat < m_pBeatMaster.NearestBeat)
+        {
+            Debug.Log("# STAY");
+
+            m_pGridMaster.OnDiscoPeteStaysOnTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
+        }
+    }
+
     private void ItlUpdateDirection()
     {
         DIR eCurrDir = ItlGetDirFromInput();
@@ -61,7 +81,11 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             if (m_pBeatMaster.allowsJump())
             {
                 if (m_iLockedBeat != m_pBeatMaster.NearestBeat)
+                {
+                    Debug.Log("--- JUMP BEGIN");
                     m_eDir = eCurrDir;
+                    m_iLastJumpedBeat = m_pBeatMaster.NearestBeat;
+                }
             }
             else
             {
@@ -72,10 +96,6 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             {
                 m_pGridMaster.OnDiscoPeteLeavesTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
             }
-            /*else
-            {
-                m_pGridMaster.OnDiscoPeteStaysOnTile(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
-            }*/
         }
 
         m_bPrevKeyPressed = (eCurrDir != DIR.IDLE);
@@ -118,13 +138,11 @@ public class DiscoPeteBehaviour : MonoBehaviour {
                 transform.position = new Vector3(Mathf.Floor(transform.position.x + 0.5f), 0.5f, Mathf.Floor(transform.position.z + 0.5f));
                 m_eDir = DIR.IDLE;
 
+                Debug.Log("--- JUMP END");
+
                 m_pGridMaster.OnDiscoPeteLanded(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
             }
         }
-    }
-
-    private void BeatMasterOnBeatEvent()
-    {
     }
 
     private DIR ItlGetDirFromInput()

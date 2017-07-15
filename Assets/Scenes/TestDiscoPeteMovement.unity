@@ -514,7 +514,7 @@ MonoBehaviour:
   musicSource: {fileID: 441166418}
   beatOffset: 0.024
   bps: 1.95
-  maxBeatDiff: 0.1
+  maxBeatDiff: 0.2
 --- !u!1 &495617139
 GameObject:
   m_ObjectHideFlags: 0
