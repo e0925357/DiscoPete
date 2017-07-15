@@ -13,6 +13,8 @@ namespace Assets.Scripts
 		{
 			base.Start();
 			animator = GetComponent<Animator>();
+            if (animator == null)
+                animator = GetComponentInChildren<Animator>();
 		}
 
 		protected override bool Active
