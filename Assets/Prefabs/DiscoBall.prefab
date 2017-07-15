@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95895366399425044}
   m_Layer: 0
   m_Name: DiscoBall
-  m_TagString: Untagged
+  m_TagString: Emissive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,6 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6da99536af2cf364c9f148b7a93bfc50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  registerInGrid: 1
   activeTime: 1
   inactiveTime: 3
   startOffset: 0
