@@ -1155,8 +1155,9 @@ GameObject:
   - component: {fileID: 1788845844}
   - component: {fileID: 1788845843}
   - component: {fileID: 1788845842}
+  - component: {fileID: 1788845845}
   m_Layer: 0
-  m_Name: Tile12 (1)
+  m_Name: EndTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1226,6 +1227,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1788845840}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1788845845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1788845840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c5e659cc00c0964d8b7a63d96edecab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1896315122
 GameObject:
   m_ObjectHideFlags: 0

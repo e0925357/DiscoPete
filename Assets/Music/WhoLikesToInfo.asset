@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24acaf896dc55b141a508efd14e61b25, type: 3}
+  m_Name: WhoLikesToInfo
+  m_EditorClassIdentifier: 
+  song: {fileID: 8300000, guid: 90e7b620fd77502489691009283b0601, type: 3}
+  bpm: 117
+  offset: 0.024
