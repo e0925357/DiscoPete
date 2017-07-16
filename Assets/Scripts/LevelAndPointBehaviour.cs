@@ -186,7 +186,7 @@ public class LevelAndPointBehaviour : MonoBehaviour {
             Scene pNextLevel = SceneManager.GetSceneByBuildIndex(iLevel);
 
 	        m_pBeatMaster.beatEvent -= OnBeat;
-	        SceneManager.LoadScene(pNextLevel.buildIndex);
+	        SceneManager.LoadScene(iLevel);
 		}
         catch
         {
