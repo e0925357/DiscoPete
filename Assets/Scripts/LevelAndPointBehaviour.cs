@@ -33,7 +33,13 @@ public class LevelAndPointBehaviour : MonoBehaviour {
          KeyCode.Alpha9,
      };
 
-    void Awake()
+	public int OverallPoints
+	{
+		get { return m_iOverallPoints; }
+		set { m_iOverallPoints = value; }
+	}
+
+	void Awake()
     {
         // we want this game object for all levels
         DontDestroyOnLoad(transform.gameObject);
@@ -188,7 +194,7 @@ public class LevelAndPointBehaviour : MonoBehaviour {
     {
         try
         {
-            Scene pNextLevel = SceneManager.GetSceneByBuildIndex(iLevel);
+            SceneManager.GetSceneByBuildIndex(iLevel);
 
 	        m_pBeatMaster.beatEvent -= OnBeat;
 	        SceneManager.LoadScene(iLevel);
