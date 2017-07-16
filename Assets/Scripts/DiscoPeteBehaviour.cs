@@ -59,6 +59,9 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
         GameObject lapGO = GameObject.FindWithTag("LevelAndPointMaster");
         m_pLevelAndPointMaster = lapGO.GetComponent<LevelAndPointBehaviour>();
+
+        if (m_pLevelAndPointMaster == null)
+            Debug.Log("DiscoPeteBehaviour: LevelAndPointMaster not found!");
     }
 
     void OnDisable()
@@ -88,7 +91,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 
     public void Say(string text)
     {
-        Debug.Log("DISCOPETE says: " + text);
+        //Debug.Log("DISCOPETE says: " + text);
     }
 
     public void Reset()
@@ -124,7 +127,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         m_bAllowMovement = false;
         m_eDir = DIR.IDLE;
         m_fMoved = 0.0f;
-        Debug.Log("YOU HAVE WON!");
+        //Debug.Log("YOU HAVE WON!");
         m_pLevelAndPointMaster.OnDiscoPeteFinishedCurrentLevel();
     }
 
@@ -158,7 +161,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             {
                 if (m_iLockedBeat != m_pBeatMaster.NearestBeat) // check if movement is not locked
                 {
-                    Debug.Log("--- JUMP BEGIN");
+                    //Debug.Log("--- JUMP BEGIN");
 					m_pAnimator.SetTrigger(JUMP);
                     m_eDir = eCurrDir; // change direction
                     m_iLastJumpedBeat = m_pBeatMaster.NearestBeat; // set last beat where pete jumped
@@ -216,7 +219,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
                 transform.position = new Vector3(Mathf.Floor(transform.position.x + 0.5f), 0.5f, Mathf.Floor(transform.position.z + 0.5f));
                 m_eDir = DIR.IDLE;
 
-                Debug.Log("--- JUMP END");
+                //Debug.Log("--- JUMP END");
 
                 m_pGridMaster.OnDiscoPeteLanded(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
             }

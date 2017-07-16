@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
 
@@ -25,23 +26,28 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
         DontDestroyOnLoad(transform.gameObject);
     }
 
+    // called second
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log(mode);
+
+        ItlFindObjects();
+
+        m_nCurrentLevelBeats = 0;
+        m_bWonCurrentLevel = false;
+        m_bCounting = false;
+    }
+
     protected override void OnEnable()
     {
         base.OnEnable();
-
-        GameObject guiGO = GameObject.FindWithTag("GUIMaster");
-        m_pGUIMaster = guiGO.GetComponent<GUIMaster>();
-        m_pGUIMaster.HideText();
-
-        GameObject dpGO = GameObject.FindWithTag("DiscoPete");
-        m_pDiscoPete = dpGO.GetComponent<DiscoPeteBehaviour>();
-
-        GameObject gmGO = GameObject.FindWithTag("GridMaster");
-        m_pGridMaster = gmGO.GetComponent<GridMaster>();
+        ItlFindObjects();
     }
 
     protected override void OnDisable()
     {
+        Debug.Log("LevelAndPointBehaviour::OnDisable");
         base.OnDisable();
     }
 
@@ -51,7 +57,6 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
         {
             if(Input.GetKey(KeyCode.Return))
             {
-                m_bWonCurrentLevel = false;
                 ItlGoToNextLevel();
             }
         }
@@ -59,7 +64,6 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
         {
             if(Input.GetKey(KeyCode.R))
             {
-                m_nCurrentLevelBeats = 0;
                 ItlResetLevel();
             }
         }
@@ -68,7 +72,8 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
     // TEST
     private void OnGUI()
     {
-        GUI.Label(new Rect(0, 0, Screen.width, Screen.height), "Points: " + m_nCurrentLevelBeats);
+        Scene pCurrentScene = SceneManager.GetActiveScene();
+        GUI.Label(new Rect(0, 0, Screen.width, Screen.height), pCurrentScene.name + " Points: " + m_nCurrentLevelBeats);
     }
 
     protected override void OnBeat()
@@ -86,6 +91,7 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
 
     public void OnDiscoPeteDied()
     {
+        Debug.Log("LevelAndPointBehaviour::OnDiscoPeteDied");
         m_pGUIMaster.ShowText("YOU DIED!", "Press R to restart");
 
         m_bDiscoPeteCurrentlyDead = true;
@@ -96,10 +102,10 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
     public void OnDiscoPeteFinishedCurrentLevel()
     {
         m_bWonCurrentLevel = true;
+        m_bCounting = false;
 
-        if(ItlIsThereNextLevel() == false)
+        if (ItlIsThereNextLevel() == false)
         {
-            m_bCounting = false;
             m_bWonOverall = true;
             ItlDisplayOverallWinningMessage();
         }
@@ -122,8 +128,18 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
 
     private bool ItlIsThereNextLevel()
     {
-        // TODO
-        return false;
+        bool bNextLevelAvailable = true;
+
+        try
+        {
+            Scene pNextLevel = SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        catch
+        {
+            bNextLevelAvailable = false;
+        }
+
+        return bNextLevelAvailable;
     }
 
     private void ItlGoToNextLevel()
@@ -132,6 +148,9 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
         m_bDiscoPeteCurrentlyDead = false;
         m_bNoDeathBonus = true;
         m_nCurrentLevelBeats = 0;
+        m_bWonCurrentLevel = false;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     private void ItlDisplayGoToNextLevelMessage()
@@ -147,5 +166,29 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
         GameObject guiGO = GameObject.FindWithTag("GUIMaster");
         GUIMaster pGUIMaster = guiGO.GetComponent<GUIMaster>();
         pGUIMaster.ShowText("YOU WON!", "");
+    }
+
+    private void ItlFindObjects()
+    {
+        Debug.Log("LevelAndPointBehaviour::ItlFindObjects");
+
+        GameObject guiGO = GameObject.FindWithTag("GUIMaster");
+        m_pGUIMaster = guiGO.GetComponent<GUIMaster>();
+        m_pGUIMaster.HideText();
+
+        GameObject dpGO = GameObject.FindWithTag("DiscoPete");
+        m_pDiscoPete = dpGO.GetComponent<DiscoPeteBehaviour>();
+
+        GameObject gmGO = GameObject.FindWithTag("GridMaster");
+        m_pGridMaster = gmGO.GetComponent<GridMaster>();
+
+        if (m_pGUIMaster == null)
+            Debug.Log("LevelAndPointBehaviour: GUIMaster not found");
+
+        if (m_pDiscoPete == null)
+            Debug.Log("LevelAndPointBehaviour: DiscoPeteBehaviour not found");
+
+        if (m_pGridMaster == null)
+            Debug.Log("LevelAndPointBehaviour: GridMaster not found");
     }
 }
