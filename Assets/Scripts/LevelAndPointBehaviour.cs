@@ -204,7 +204,7 @@ public class LevelAndPointBehaviour : MonoBehaviour {
         GameObject guiGO = GameObject.FindWithTag("GUIMaster");
         GUIMaster pGUIMaster = guiGO.GetComponent<GUIMaster>();
 
-        pGUIMaster.ShowText("DANCED", "Press RETURN");
+        pGUIMaster.ShowText("GROOVY", "Press RETURN");
     }
 
     private void ItlDisplayOverallWinningMessage()
