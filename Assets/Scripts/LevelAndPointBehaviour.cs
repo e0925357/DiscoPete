@@ -42,7 +42,6 @@ public class LevelAndPointBehaviour : MonoBehaviour {
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        ItlFindObjects();
     }
 
     void OnDisable()
