@@ -6,8 +6,10 @@ public class StartTile : SafeTile {
 
     private LevelAndPointBehaviour m_pLevelMaster;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+		base.OnEnable();
+
         GameObject lapGO = GameObject.FindWithTag("LevelAndPointMaster");
         m_pLevelMaster = lapGO.GetComponent<LevelAndPointBehaviour>();
     }

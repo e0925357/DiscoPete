@@ -162,7 +162,7 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
         try
         {
-            Scene pNextLevel = SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1);
         }
         catch
         {
@@ -181,22 +181,18 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
     private void ItlGoToLevel(int iLevel)
     {
-        bool bLevelAvailable = true;
         try
         {
             Scene pNextLevel = SceneManager.GetSceneByBuildIndex(iLevel);
-        }
+
+	        m_pBeatMaster.beatEvent -= OnBeat;
+	        SceneManager.LoadScene(pNextLevel.buildIndex);
+		}
         catch
         {
-            bLevelAvailable = false;
+            //Do nothing
         }
-
-        if (bLevelAvailable)
-        {
-            m_pBeatMaster.beatEvent -= OnBeat;
-            SceneManager.LoadScene(iLevel);
-        }
-        }
+    }
 
     private void ItlDisplayGoToNextLevelMessage()
     {
