@@ -171,6 +171,11 @@ public class BeatMaster : MonoBehaviour
 		return Mathf.FloorToInt(time * songInfo.Bps);
 	}
 
+    public float getMusicLength()
+    {
+        return musicSource.clip.length;
+    }
+
     private float getCurrentTime()
     {
         return musicSource.time - songInfo.offset;

@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class LevelAndPointBehaviour : MonoBehaviour {
 
-    private uint m_nOverallPoints = 0;
+    private int m_iOverallPoints = 0;
 
     private bool m_bWonCurrentLevel = false;
     private bool m_bWonOverall = false;
 
     private bool m_bCounting = false;
-    private uint m_nCurrentLevelBeats = 0;
-    private bool m_bNoDeathBonus = true;
+    private int m_iCurrentLevelPoints = 0;
+    private int m_iFewDeathBonus = 100;
 
     private bool m_bDiscoPeteCurrentlyDead = false;
 
@@ -20,6 +20,18 @@ public class LevelAndPointBehaviour : MonoBehaviour {
     private DiscoPeteBehaviour m_pDiscoPete;
     private GridMaster m_pGridMaster;
     private BeatMaster m_pBeatMaster;
+
+    private KeyCode[] m_vNumKeyCodes = {
+         KeyCode.Alpha1,
+         KeyCode.Alpha2,
+         KeyCode.Alpha3,
+         KeyCode.Alpha4,
+         KeyCode.Alpha5,
+         KeyCode.Alpha6,
+         KeyCode.Alpha7,
+         KeyCode.Alpha8,
+         KeyCode.Alpha9,
+     };
 
     void Awake()
     {
@@ -34,9 +46,11 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
         ItlFindObjects();
 
-        m_nCurrentLevelBeats = 0;
+        m_iCurrentLevelPoints = Mathf.FloorToInt(m_pBeatMaster.songInfo.Bps * m_pBeatMaster.getMusicLength());
         m_bWonCurrentLevel = false;
         m_bCounting = false;
+        m_iFewDeathBonus = 100;
+        m_bDiscoPeteCurrentlyDead = false;
     }
 
     void OnEnable()
@@ -66,26 +80,37 @@ public class LevelAndPointBehaviour : MonoBehaviour {
                 ItlResetLevel();
             }
         }
+
+        for(int i = 0; i < m_vNumKeyCodes.Length; ++i)
+        {
+            if(Input.GetKey(m_vNumKeyCodes[i]))
+            {
+                ItlGoToLevel(i);
+            }
+        }
     }
 
     // TEST
     private void OnGUI()
     {
         Scene pCurrentScene = SceneManager.GetActiveScene();
-        GUI.Label(new Rect(0, 0, Screen.width, Screen.height), pCurrentScene.name + " Points: " + m_nCurrentLevelBeats);
+
+        string message = pCurrentScene.name + " Points: " + m_iCurrentLevelPoints + " Overall: " + m_iOverallPoints;
+        message += " Bonus: " + m_iFewDeathBonus;
+
+        GUI.Label(new Rect(0, 0, Screen.width, Screen.height), message);
     }
 
     protected void OnBeat()
     {
         if (m_bCounting)
-            ++m_nCurrentLevelBeats;
+            --m_iCurrentLevelPoints; ;
     }
 
     public void OnDiscoPeteJumpedFromStart()
     {
         // Start counting
         m_bCounting = true;
-        m_nCurrentLevelBeats = 0;
     }
 
     public void OnDiscoPeteDied()
@@ -94,7 +119,10 @@ public class LevelAndPointBehaviour : MonoBehaviour {
         m_pGUIMaster.ShowText("YOU DIED!", "Press R to restart");
 
         m_bDiscoPeteCurrentlyDead = true;
-        m_bNoDeathBonus = false;
+        m_iFewDeathBonus -= 10;
+        if (m_iFewDeathBonus < 0)
+            m_iFewDeathBonus = 0;
+
         m_bCounting = false;
     }
 
@@ -102,6 +130,9 @@ public class LevelAndPointBehaviour : MonoBehaviour {
     {
         m_bWonCurrentLevel = true;
         m_bCounting = false;
+
+        m_iOverallPoints += m_iCurrentLevelPoints;
+        m_iOverallPoints += m_iFewDeathBonus;
 
         if (ItlIsThereNextLevel() == false)
         {
@@ -116,7 +147,6 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
     private void ItlResetLevel()
     {
-        m_nCurrentLevelBeats = 0;
         m_bDiscoPeteCurrentlyDead = false;
         m_pDiscoPete.Reset();
 
@@ -144,16 +174,29 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
     private void ItlGoToNextLevel()
     {
-        // TODO
-        m_bDiscoPeteCurrentlyDead = false;
-        m_bNoDeathBonus = true;
-        m_nCurrentLevelBeats = 0;
-        m_bWonCurrentLevel = false;
-
         m_pBeatMaster.beatEvent -= OnBeat;
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    private void ItlGoToLevel(int iLevel)
+    {
+        bool bLevelAvailable = true;
+        try
+        {
+            Scene pNextLevel = SceneManager.GetSceneByBuildIndex(iLevel);
+        }
+        catch
+        {
+            bLevelAvailable = false;
+        }
+
+        if (bLevelAvailable)
+        {
+            m_pBeatMaster.beatEvent -= OnBeat;
+            SceneManager.LoadScene(iLevel);
+        }
+        }
 
     private void ItlDisplayGoToNextLevelMessage()
     {
