@@ -36,7 +36,7 @@ public class GridMaster : MonoBehaviour {
 
     public void RegisterTile(GridTile tile, int x, int z)
     {
-        Debug.Log("Registering tile " + tile);
+       // Debug.Log("Registering tile " + tile);
         m_pGridTiles[x, z] = tile;
     }
 

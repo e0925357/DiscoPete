@@ -30,7 +30,7 @@ public class NormalTile : GridTile {
 
     public override void OnDiscoPeteLeaves(DiscoPeteBehaviour pete)
     {
-        Debug.Log("Disco Pete leaves tile!");
+        //Debug.Log("Disco Pete leaves tile!");
         m_iLifeOfTile--;
 
         if (m_iLifeOfTile > 0)
@@ -43,7 +43,7 @@ public class NormalTile : GridTile {
 
     public override void OnDiscoPeteStays(DiscoPeteBehaviour pete)
     {
-        Debug.Log("Disco Pete stays on tile!");
+        //Debug.Log("Disco Pete stays on tile!");
         m_iLifeOfTile--;
 
 

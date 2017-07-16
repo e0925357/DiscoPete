@@ -22,7 +22,7 @@ public abstract class GridTile : Assets.Scripts.AbstractBeatable {
             m_iXPosInGrid = Mathf.FloorToInt(transform.position.x + 0.5f);
             m_iZPosInGrid = Mathf.FloorToInt(transform.position.z + 0.5f);
 
-            Debug.Log("GridTile::Start (" + m_iXPosInGrid + "," + m_iZPosInGrid + ")");
+            //Debug.Log("GridTile::Start (" + m_iXPosInGrid + "," + m_iZPosInGrid + ")");
             GameObject gmGO = GameObject.FindWithTag("GridMaster");
             gridMaster = gmGO.GetComponent<GridMaster>();
 
