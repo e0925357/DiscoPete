@@ -1558,7 +1558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702006061cb27d84398a0269852e1a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  songInfo: {fileID: 11400000, guid: 49be092c55cc32e48b05d5bc3f6ae0e7, type: 2}
+  songInfo: {fileID: 11400000, guid: b70b1463135e81e42aaf02223ea66c95, type: 2}
   deactivateLightsSound: {fileID: 0}
   maxBeatDiff: 0.2
 --- !u!4 &1469517949
