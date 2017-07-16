@@ -21,12 +21,13 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 	private int m_iLockedBeat = -1;
     private int m_iLastJumpedBeat = -1;
     private bool m_bAlive = true;
-    private bool m_bWon = false;
+    private bool m_bAllowMovement = true;
 
     private BeatMaster m_pBeatMaster;
     private GridMaster m_pGridMaster;
 	private Animator m_pAnimator;
     private GUIMaster m_pGUIMaster;
+    private LevelAndPointBehaviour m_pLevelAndPointMaster;
 
 	[SerializeField]
 	private GameObject m_pPeteModel;
@@ -55,6 +56,12 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 	    m_pAnimator = GetComponent<Animator>();
 		m_pAnimator.SetFloat(JUMP_DURATION, m_fSpeed);
 		m_pAnimator.SetFloat(SPEED, m_pBeatMaster.songInfo.Bps);
+
+        GameObject lapGO = GameObject.FindWithTag("LevelAndPointMaster");
+        m_pLevelAndPointMaster = lapGO.GetComponent<LevelAndPointBehaviour>();
+
+        if (m_pLevelAndPointMaster == null)
+            Debug.Log("DiscoPeteBehaviour: LevelAndPointMaster not found!");
     }
 
     void OnDisable()
@@ -75,32 +82,24 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if(m_bAlive && !m_bWon)
+        if(m_bAlive && m_bAllowMovement)
         {
             ItlUpdateDirection();
             ItlMovePete();
-        }
-        else
-        {
-            if(Input.GetKeyDown(KeyCode.R))
-            {
-                m_bAlive = true;
-                m_bWon = false;
-
-                if(m_pGUIMaster != null)
-                    m_pGUIMaster.HideText();
-
-               
-				m_pPeteModel.SetActive(true);
-				m_pGridMaster.Reset();
-                m_pGridMaster.SetDiscoPeteToStart();
-            }
         }
 	}
 
     public void Say(string text)
     {
-        Debug.Log("DISCOPETE says: " + text);
+        //Debug.Log("DISCOPETE says: " + text);
+    }
+
+    public void Reset()
+    {
+        m_bAlive = true;
+        m_bAllowMovement = true;
+
+        m_pPeteModel.SetActive(true);
     }
 
     public void Die()
@@ -119,20 +118,17 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 				Instantiate(deathPrefab, transform.position, Quaternion.identity);
 			}
 
-			if (m_pGUIMaster != null)
-				m_pGUIMaster.ShowText("YOU DIED!", "Press R to restart");
+            m_pLevelAndPointMaster.OnDiscoPeteDied();
 		}
     }
 
     public void Wins()
     {
+        m_bAllowMovement = false;
         m_eDir = DIR.IDLE;
         m_fMoved = 0.0f;
-        Debug.Log("YOU HAVE WON!");
-        m_bWon = true;
-
-        if (m_pGUIMaster != null)
-            m_pGUIMaster.ShowText("YOU WON!", "Press R to restart");
+        //Debug.Log("YOU HAVE WON!");
+        m_pLevelAndPointMaster.OnDiscoPeteFinishedCurrentLevel();
     }
 
     private void BeatMasterOnBeatEvent()
@@ -165,7 +161,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
             {
                 if (m_iLockedBeat != m_pBeatMaster.NearestBeat) // check if movement is not locked
                 {
-                    Debug.Log("--- JUMP BEGIN");
+                    //Debug.Log("--- JUMP BEGIN");
 					m_pAnimator.SetTrigger(JUMP);
                     m_eDir = eCurrDir; // change direction
                     m_iLastJumpedBeat = m_pBeatMaster.NearestBeat; // set last beat where pete jumped
@@ -223,7 +219,7 @@ public class DiscoPeteBehaviour : MonoBehaviour {
                 transform.position = new Vector3(Mathf.Floor(transform.position.x + 0.5f), 0.5f, Mathf.Floor(transform.position.z + 0.5f));
                 m_eDir = DIR.IDLE;
 
-                Debug.Log("--- JUMP END");
+                //Debug.Log("--- JUMP END");
 
                 m_pGridMaster.OnDiscoPeteLanded(this, Mathf.FloorToInt(transform.position.x + 0.5f), Mathf.FloorToInt(transform.position.z + 0.5f));
             }
