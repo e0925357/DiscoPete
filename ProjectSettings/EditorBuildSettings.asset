@@ -21,5 +21,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Level_03.unity
     guid: 90bfef3d8927a8340a022850efcd4ab5
   - enabled: 1
+    path: Assets/Scenes/Level_04.unity
+    guid: a0340dc3c9e4aa34ea7c68e9e1dd7b43
+  - enabled: 1
     path: Assets/Scenes/SnailLevel.unity
     guid: a46f770e771451646b05365e2151d10c
