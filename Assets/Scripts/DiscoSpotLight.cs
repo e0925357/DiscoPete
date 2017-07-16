@@ -22,14 +22,18 @@ public class DiscoSpotLight : AbstractBeatable
 	void SetLightColor(Color color)
 	{
 		SetDiscoColorOnMaterial(lightEngineRenderer.materials[1], color);
-		SetDiscoColorOnMaterial(lightConeRenderer.materials[0], color);
+		SetDiscoColorOnMaterial(lightConeRenderer.materials[0], color, true);
 
 	}
 
-	private void SetDiscoColorOnMaterial(Material material, Color color)
+	private void SetDiscoColorOnMaterial(Material material, Color color, bool setColorOnly = false)
 	{
 		material.SetColor("_Color", color);
-		material.SetColor("_EmissionColor", color);
+
+		if (!setColorOnly)
+		{
+			material.SetColor("_EmissionColor", color);
+		}
 	}
 
 	protected override void OnBeat()
