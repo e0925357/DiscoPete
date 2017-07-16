@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LaserLevel.unity
     guid: 299b9e50162d6894fb126eaf24ce0872
   - enabled: 0
-    path: Assets/Scenes/SnailLevel.unity
-    guid: a46f770e771451646b05365e2151d10c
-  - enabled: 0
     path: Assets/Scenes/PrefabLevel.unity
     guid: e54578dda7aa75a419ae253b5521ae42
   - enabled: 1
@@ -20,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_02.unity
     guid: ae232a7ae878498468531d4651bcef50
+  - enabled: 1
+    path: Assets/Scenes/SnailLevel.unity
+    guid: a46f770e771451646b05365e2151d10c
