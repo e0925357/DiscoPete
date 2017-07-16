@@ -66,14 +66,22 @@ public class BeatMaster : MonoBehaviour
 				if (goPairs[i].priority > p) break;
 
 				Renderer[] renderers = goPairs[i].go.GetComponentsInChildren<Renderer>();
+				bool changeColor = !"SpotlightCone".Equals(goPairs[i].go.name);
 
 				for (int r = 0; r < renderers.Length; ++r)
 				{
-					Material[] materials = renderers[r].materials;
-					int matIndex = Mathf.Min(1, materials.Length-1);
-					
-					materials[matIndex].SetColor("_Color", Color.black);
-					materials[matIndex].SetColor("_EmissionColor", Color.black);
+					if (changeColor)
+					{
+						Material[] materials = renderers[r].materials;
+						int matIndex = Mathf.Min(1, materials.Length - 1);
+
+						materials[matIndex].SetColor("_Color", Color.black);
+						materials[matIndex].SetColor("_EmissionColor", Color.black);
+					}
+					else
+					{
+						renderers[r].enabled = false;
+					}
 				}
 			}
 
