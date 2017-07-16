@@ -21,6 +21,18 @@ public class LevelAndPointBehaviour : MonoBehaviour {
     private GridMaster m_pGridMaster;
     private BeatMaster m_pBeatMaster;
 
+    private KeyCode[] m_vNumKeyCodes = {
+         KeyCode.Alpha1,
+         KeyCode.Alpha2,
+         KeyCode.Alpha3,
+         KeyCode.Alpha4,
+         KeyCode.Alpha5,
+         KeyCode.Alpha6,
+         KeyCode.Alpha7,
+         KeyCode.Alpha8,
+         KeyCode.Alpha9,
+     };
+
     void Awake()
     {
         // we want this game object for all levels
@@ -66,6 +78,14 @@ public class LevelAndPointBehaviour : MonoBehaviour {
             if(Input.GetKey(KeyCode.R))
             {
                 ItlResetLevel();
+            }
+        }
+
+        for(int i = 0; i < m_vNumKeyCodes.Length; ++i)
+        {
+            if(Input.GetKey(m_vNumKeyCodes[i]))
+            {
+                ItlGoToLevel(i);
             }
         }
     }
@@ -158,6 +178,25 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    private void ItlGoToLevel(int iLevel)
+    {
+        bool bLevelAvailable = true;
+        try
+        {
+            Scene pNextLevel = SceneManager.GetSceneByBuildIndex(iLevel);
+        }
+        catch
+        {
+            bLevelAvailable = false;
+        }
+
+        if (bLevelAvailable)
+        {
+            m_pBeatMaster.beatEvent -= OnBeat;
+            SceneManager.LoadScene(iLevel);
+        }
+        }
 
     private void ItlDisplayGoToNextLevelMessage()
     {
