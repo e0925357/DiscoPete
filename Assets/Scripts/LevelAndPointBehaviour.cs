@@ -12,7 +12,7 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
     private bool m_bCounting = false;
     private int m_iCurrentLevelPoints = 0;
-    private bool m_bNoDeathBonus = true;
+    private int m_iFewDeathBonus = 100;
 
     private bool m_bDiscoPeteCurrentlyDead = false;
 
@@ -37,7 +37,8 @@ public class LevelAndPointBehaviour : MonoBehaviour {
         m_iCurrentLevelPoints = Mathf.FloorToInt(m_pBeatMaster.songInfo.Bps * m_pBeatMaster.getMusicLength());
         m_bWonCurrentLevel = false;
         m_bCounting = false;
-        m_bNoDeathBonus = true;
+        m_iFewDeathBonus = 100;
+        m_bDiscoPeteCurrentlyDead = false;
     }
 
     void OnEnable()
@@ -73,7 +74,11 @@ public class LevelAndPointBehaviour : MonoBehaviour {
     private void OnGUI()
     {
         Scene pCurrentScene = SceneManager.GetActiveScene();
-        GUI.Label(new Rect(0, 0, Screen.width, Screen.height), pCurrentScene.name + " Points: " + m_iCurrentLevelPoints + " Overall: " + m_iOverallPoints);
+
+        string message = pCurrentScene.name + " Points: " + m_iCurrentLevelPoints + " Overall: " + m_iOverallPoints;
+        message += " Bonus: " + m_iFewDeathBonus;
+
+        GUI.Label(new Rect(0, 0, Screen.width, Screen.height), message);
     }
 
     protected void OnBeat()
@@ -94,7 +99,10 @@ public class LevelAndPointBehaviour : MonoBehaviour {
         m_pGUIMaster.ShowText("YOU DIED!", "Press R to restart");
 
         m_bDiscoPeteCurrentlyDead = true;
-        m_bNoDeathBonus = false;
+        m_iFewDeathBonus -= 10;
+        if (m_iFewDeathBonus < 0)
+            m_iFewDeathBonus = 0;
+
         m_bCounting = false;
     }
 
@@ -103,13 +111,8 @@ public class LevelAndPointBehaviour : MonoBehaviour {
         m_bWonCurrentLevel = true;
         m_bCounting = false;
 
-        if(m_bNoDeathBonus)
-        {
-            m_iCurrentLevelPoints += 100;
-        }
-
         m_iOverallPoints += m_iCurrentLevelPoints;
-
+        m_iOverallPoints += m_iFewDeathBonus;
 
         if (ItlIsThereNextLevel() == false)
         {
@@ -151,11 +154,6 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
     private void ItlGoToNextLevel()
     {
-        // TODO
-        m_bDiscoPeteCurrentlyDead = false;
-        m_bNoDeathBonus = true;
-        m_bWonCurrentLevel = false;
-
         m_pBeatMaster.beatEvent -= OnBeat;
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
