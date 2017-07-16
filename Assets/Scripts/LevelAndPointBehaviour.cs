@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LevelAndPointBehaviour : MonoBehaviour {
 
-    private uint m_nOverallPoints = 0;
+    private int m_iOverallPoints = 0;
 
     private bool m_bWonCurrentLevel = false;
     private bool m_bWonOverall = false;
 
     private bool m_bCounting = false;
-    private uint m_nCurrentLevelBeats = 0;
+    private int m_iCurrentLevelPoints = 0;
     private bool m_bNoDeathBonus = true;
 
     private bool m_bDiscoPeteCurrentlyDead = false;
@@ -34,9 +34,10 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
         ItlFindObjects();
 
-        m_nCurrentLevelBeats = 0;
+        m_iCurrentLevelPoints = Mathf.FloorToInt(m_pBeatMaster.songInfo.Bps * m_pBeatMaster.getMusicLength());
         m_bWonCurrentLevel = false;
         m_bCounting = false;
+        m_bNoDeathBonus = true;
     }
 
     void OnEnable()
@@ -72,20 +73,19 @@ public class LevelAndPointBehaviour : MonoBehaviour {
     private void OnGUI()
     {
         Scene pCurrentScene = SceneManager.GetActiveScene();
-        GUI.Label(new Rect(0, 0, Screen.width, Screen.height), pCurrentScene.name + " Points: " + m_nCurrentLevelBeats);
+        GUI.Label(new Rect(0, 0, Screen.width, Screen.height), pCurrentScene.name + " Points: " + m_iCurrentLevelPoints + " Overall: " + m_iOverallPoints);
     }
 
     protected void OnBeat()
     {
         if (m_bCounting)
-            ++m_nCurrentLevelBeats;
+            --m_iCurrentLevelPoints; ;
     }
 
     public void OnDiscoPeteJumpedFromStart()
     {
         // Start counting
         m_bCounting = true;
-        m_nCurrentLevelBeats = 0;
     }
 
     public void OnDiscoPeteDied()
@@ -103,6 +103,14 @@ public class LevelAndPointBehaviour : MonoBehaviour {
         m_bWonCurrentLevel = true;
         m_bCounting = false;
 
+        if(m_bNoDeathBonus)
+        {
+            m_iCurrentLevelPoints += 100;
+        }
+
+        m_iOverallPoints += m_iCurrentLevelPoints;
+
+
         if (ItlIsThereNextLevel() == false)
         {
             m_bWonOverall = true;
@@ -116,7 +124,6 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
     private void ItlResetLevel()
     {
-        m_nCurrentLevelBeats = 0;
         m_bDiscoPeteCurrentlyDead = false;
         m_pDiscoPete.Reset();
 
@@ -147,7 +154,6 @@ public class LevelAndPointBehaviour : MonoBehaviour {
         // TODO
         m_bDiscoPeteCurrentlyDead = false;
         m_bNoDeathBonus = true;
-        m_nCurrentLevelBeats = 0;
         m_bWonCurrentLevel = false;
 
         m_pBeatMaster.beatEvent -= OnBeat;
