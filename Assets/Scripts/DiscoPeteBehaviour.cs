@@ -26,7 +26,6 @@ public class DiscoPeteBehaviour : MonoBehaviour {
     private BeatMaster m_pBeatMaster;
     private GridMaster m_pGridMaster;
 	private Animator m_pAnimator;
-    private GUIMaster m_pGUIMaster;
     private LevelAndPointBehaviour m_pLevelAndPointMaster;
 
 	[SerializeField]
@@ -45,10 +44,6 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         GameObject gmGO = GameObject.FindWithTag("GridMaster");
         m_pGridMaster = gmGO.GetComponent<GridMaster>();
         m_pGridMaster.SetDiscoPeteToStart();
-
-        GameObject guiGO = GameObject.FindWithTag("GUIMaster");
-        if(guiGO != null)
-            m_pGUIMaster = guiGO.GetComponent<GUIMaster>();
 
         m_pBeatMaster.beatEvent += BeatMasterOnBeatEvent;
         m_pBeatMaster.onJumpChancePassedEvent += BeatMasterOnJumpChancePassedEvent;

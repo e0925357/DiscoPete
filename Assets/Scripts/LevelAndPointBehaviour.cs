@@ -85,7 +85,7 @@ public class LevelAndPointBehaviour : MonoBehaviour {
         {
             if(Input.GetKey(m_vNumKeyCodes[i]))
             {
-                ItlGoToLevel(i);
+                ItlGoToLevel(i+1);
             }
         }
     }
@@ -162,7 +162,7 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
         try
         {
-            Scene pNextLevel = SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1);
         }
         catch
         {
@@ -181,29 +181,25 @@ public class LevelAndPointBehaviour : MonoBehaviour {
 
     private void ItlGoToLevel(int iLevel)
     {
-        bool bLevelAvailable = true;
         try
         {
             Scene pNextLevel = SceneManager.GetSceneByBuildIndex(iLevel);
-        }
+
+	        m_pBeatMaster.beatEvent -= OnBeat;
+	        SceneManager.LoadScene(pNextLevel.buildIndex);
+		}
         catch
         {
-            bLevelAvailable = false;
+            //Do nothing
         }
-
-        if (bLevelAvailable)
-        {
-            m_pBeatMaster.beatEvent -= OnBeat;
-            SceneManager.LoadScene(iLevel);
-        }
-        }
+    }
 
     private void ItlDisplayGoToNextLevelMessage()
     {
         GameObject guiGO = GameObject.FindWithTag("GUIMaster");
         GUIMaster pGUIMaster = guiGO.GetComponent<GUIMaster>();
 
-        pGUIMaster.ShowText("LEVEL COMPLETE!", "Press RETURN for next level");
+        pGUIMaster.ShowText("DANCED", "Press RETURN");
     }
 
     private void ItlDisplayOverallWinningMessage()
