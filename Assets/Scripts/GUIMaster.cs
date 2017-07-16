@@ -27,6 +27,12 @@ public class GUIMaster : MonoBehaviour
 	[SerializeField]
 	private RectTransform panel2;
 
+	[Space]
+	[SerializeField]
+	private Text pointsText;
+	[SerializeField]
+	private RectTransform pointsPanel;
+
 	private Vector3 panel2Target1;
 	private Vector3 panel2Target2;
 	private Coroutine animationCoroutine1;
@@ -44,7 +50,7 @@ public class GUIMaster : MonoBehaviour
 		panel2Target2 = panel2.position - new Vector3(xOvershoot, 0, 0);
 	}
 
-    public void ShowText(string line1, string line2)
+    public void ShowText(string line1, string line2, string points = null)
     {
         if (textLine1 != null)
         {
@@ -66,6 +72,13 @@ public class GUIMaster : MonoBehaviour
 	        panel2.position = new Vector3(screenWidth, panel2.position.y, panel2.position.z);
 
 	        animationCoroutine2 = StartCoroutine(AnimatePanels(panel2, panel2Target1, panel2Target2));
+		}
+
+	    if (pointsText != null && points != null)
+	    {
+			pointsPanel.GetComponent<Image>().enabled = true;
+		    pointsText.text = points;
+			pointsText.enabled = true;
 		}
 
     }
@@ -109,7 +122,13 @@ public class GUIMaster : MonoBehaviour
 	    if (panel2 != null)
 		    panel2.GetComponent<Image>().enabled = false;
 
-	    if (animationCoroutine1 != null)
+	    if (pointsPanel != null)
+		    pointsPanel.GetComponent<Image>().enabled = false;
+
+	    if (pointsText != null)
+		    pointsText.enabled = false;
+
+		if (animationCoroutine1 != null)
 	    {
 		    StopCoroutine(animationCoroutine1);
 		    animationCoroutine1 = null;

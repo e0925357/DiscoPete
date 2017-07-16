@@ -88,6 +88,11 @@ public class LevelAndPointBehaviour : MonoBehaviour {
                 ItlGoToLevel(i+1);
             }
         }
+
+	    if (Input.GetButtonDown("Cancel"))
+	    {
+		    SceneManager.LoadScene(0);
+	    }
     }
 
     // TEST
@@ -206,8 +211,15 @@ public class LevelAndPointBehaviour : MonoBehaviour {
     {
         GameObject guiGO = GameObject.FindWithTag("GUIMaster");
         GUIMaster pGUIMaster = guiGO.GetComponent<GUIMaster>();
-        pGUIMaster.ShowText("YOU WON!", "");
+        pGUIMaster.ShowText("YOU WON!", "ESC to Menu", string.Format("{0} Points!", m_iOverallPoints));
     }
+
+	public void DisplaySongOverMessage()
+	{
+		GameObject guiGO = GameObject.FindWithTag("GUIMaster");
+		GUIMaster pGUIMaster = guiGO.GetComponent<GUIMaster>();
+		pGUIMaster.ShowText("Song Over", "ESC to Menu", string.Format("{0} Points!", m_iOverallPoints));
+	}
 
     private void ItlFindObjects()
     {
