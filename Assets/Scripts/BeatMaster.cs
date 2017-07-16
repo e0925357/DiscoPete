@@ -32,9 +32,16 @@ public class BeatMaster : MonoBehaviour
 	{
 		musicSource = GetComponent<AudioSource>();
 		musicSource.clip = songInfo.song;
-		musicSource.Play();
+		StartCoroutine(StartSong(1f));
 
 		StartCoroutine(handleSongEnd());
+	}
+
+	IEnumerator StartSong(float delay)
+	{
+		yield return new WaitForSeconds(delay);
+
+		musicSource.Play();
 	}
 
 	IEnumerator handleSongEnd()
