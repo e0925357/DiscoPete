@@ -85,7 +85,7 @@ public class LevelAndPointBehaviour : MonoBehaviour {
         {
             if(Input.GetKey(m_vNumKeyCodes[i]))
             {
-                ItlGoToLevel(i);
+                ItlGoToLevel(i+1);
             }
         }
     }
@@ -203,7 +203,7 @@ public class LevelAndPointBehaviour : MonoBehaviour {
         GameObject guiGO = GameObject.FindWithTag("GUIMaster");
         GUIMaster pGUIMaster = guiGO.GetComponent<GUIMaster>();
 
-        pGUIMaster.ShowText("LEVEL COMPLETE!", "Press RETURN for next level");
+        pGUIMaster.ShowText("DANCED", "Press RETURN");
     }
 
     private void ItlDisplayOverallWinningMessage()
