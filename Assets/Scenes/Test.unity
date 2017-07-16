@@ -348,6 +348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f86326d8365c94783c0ee2cdf340e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everyOtherBeat: 1
+  hasRandomNumber: 1
   maxRandomValue: 3
 --- !u!95 &90162176
 Animator:
@@ -648,6 +650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f86326d8365c94783c0ee2cdf340e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everyOtherBeat: 1
+  hasRandomNumber: 1
   maxRandomValue: 3
 --- !u!95 &400782143
 Animator:
@@ -789,6 +793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   songInfo: {fileID: 11400000, guid: 232acb619d8df4047ba3eaa7cce7a4ef, type: 2}
   deactivateLightsSound: {fileID: 0}
+  shouldHandleSongEnd: 1
   maxBeatDiff: 0.2
 --- !u!1001 &583802687
 Prefab:
@@ -1138,6 +1143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f86326d8365c94783c0ee2cdf340e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  everyOtherBeat: 1
+  hasRandomNumber: 1
   maxRandomValue: 3
 --- !u!95 &1221464620
 Animator:

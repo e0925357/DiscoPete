@@ -51,8 +51,6 @@ public class BeatMaster : MonoBehaviour
 	{
 		yield return new WaitForSeconds(musicSource.clip.length + 2f);
 
-		//TODO: display end message
-
 		GameObject[] emissiveObjects = GameObject.FindGameObjectsWithTag("Emissive");
 		GameObjectPriorityPair[] goPairs = new GameObjectPriorityPair[emissiveObjects.Length];
 
@@ -119,6 +117,10 @@ public class BeatMaster : MonoBehaviour
 				}
 			}
 		}
+
+		GameObject guiGO = GameObject.FindWithTag("LevelAndPointMaster");
+		LevelAndPointBehaviour levelMaster = guiGO.GetComponent<LevelAndPointBehaviour>();
+		levelMaster.DisplaySongOverMessage();
 	}
 	
 	// Update is called once per frame
