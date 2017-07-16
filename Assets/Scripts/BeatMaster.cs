@@ -22,6 +22,8 @@ public class BeatMaster : MonoBehaviour
 	private AudioSource musicSource;
 	public SongInfo songInfo;
 	public AudioSource deactivateLightsSound;
+	[SerializeField]
+	private bool shouldHandleSongEnd = true;
 
     public float maxBeatDiff = 0.2f;
 
@@ -34,7 +36,8 @@ public class BeatMaster : MonoBehaviour
 		musicSource.clip = songInfo.song;
 		StartCoroutine(StartSong(1f));
 
-		StartCoroutine(handleSongEnd());
+		if(shouldHandleSongEnd)
+			StartCoroutine(handleSongEnd());
 	}
 
 	IEnumerator StartSong(float delay)

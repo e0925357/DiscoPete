@@ -11,6 +11,10 @@ public class AnimationBeater : AbstractBeatable
 	private static readonly int RANDOM = Animator.StringToHash("Random");
 
 	[SerializeField]
+	private bool everyOtherBeat = true;
+	[SerializeField]
+	private bool hasRandomNumber = true;
+	[SerializeField]
 	private int maxRandomValue = 3;
 
 	private Animator animator;
@@ -27,17 +31,21 @@ public class AnimationBeater : AbstractBeatable
 
 	protected override void OnBeat()
 	{
-		if (beatMaster.NextBeat % 2 == phase) return;
+		if (everyOtherBeat && beatMaster.NextBeat % 2 == phase) return;
 
-		int rNumber = Random.Range(0, maxRandomValue + 1);
-		if (rNumber == lastnumber)
+		if (hasRandomNumber)
 		{
-			rNumber = (rNumber + 1) % (maxRandomValue + 1);
+			int rNumber = Random.Range(0, maxRandomValue + 1);
+			if (rNumber == lastnumber)
+			{
+				rNumber = (rNumber + 1) % (maxRandomValue + 1);
+			}
+
+			lastnumber = rNumber;
+
+			animator.SetInteger(RANDOM, lastnumber);
 		}
 
-		lastnumber = rNumber;
-
-		animator.SetInteger(RANDOM, lastnumber);
 		animator.SetTrigger(BEAT);
 	}
 }
