@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
+public class LevelAndPointBehaviour : MonoBehaviour {
 
     private uint m_nOverallPoints = 0;
 
@@ -19,6 +19,7 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
     private GUIMaster m_pGUIMaster;
     private DiscoPeteBehaviour m_pDiscoPete;
     private GridMaster m_pGridMaster;
+    private BeatMaster m_pBeatMaster;
 
     void Awake()
     {
@@ -26,7 +27,6 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
         DontDestroyOnLoad(transform.gameObject);
     }
 
-    // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("OnSceneLoaded: " + scene.name);
@@ -39,16 +39,16 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
         m_bCounting = false;
     }
 
-    protected override void OnEnable()
+    void OnEnable()
     {
-        base.OnEnable();
+        SceneManager.sceneLoaded += OnSceneLoaded;
         ItlFindObjects();
     }
 
-    protected override void OnDisable()
+    void OnDisable()
     {
-        Debug.Log("LevelAndPointBehaviour::OnDisable");
-        base.OnDisable();
+        m_pBeatMaster.beatEvent -= OnBeat;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     private void Update()
@@ -76,7 +76,7 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
         GUI.Label(new Rect(0, 0, Screen.width, Screen.height), pCurrentScene.name + " Points: " + m_nCurrentLevelBeats);
     }
 
-    protected override void OnBeat()
+    protected void OnBeat()
     {
         if (m_bCounting)
             ++m_nCurrentLevelBeats;
@@ -117,6 +117,7 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
 
     private void ItlResetLevel()
     {
+        m_nCurrentLevelBeats = 0;
         m_bDiscoPeteCurrentlyDead = false;
         m_pDiscoPete.Reset();
 
@@ -150,6 +151,8 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
         m_nCurrentLevelBeats = 0;
         m_bWonCurrentLevel = false;
 
+        m_pBeatMaster.beatEvent -= OnBeat;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
@@ -182,6 +185,10 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
         GameObject gmGO = GameObject.FindWithTag("GridMaster");
         m_pGridMaster = gmGO.GetComponent<GridMaster>();
 
+        GameObject bmGO = GameObject.FindWithTag("Music");
+        m_pBeatMaster = bmGO.GetComponent<BeatMaster>();
+        m_pBeatMaster.beatEvent += OnBeat;
+
         if (m_pGUIMaster == null)
             Debug.Log("LevelAndPointBehaviour: GUIMaster not found");
 
@@ -190,5 +197,8 @@ public class LevelAndPointBehaviour : Assets.Scripts.AbstractBeatable {
 
         if (m_pGridMaster == null)
             Debug.Log("LevelAndPointBehaviour: GridMaster not found");
+
+        if(m_pBeatMaster == null)
+            Debug.Log("LevelAndPointBehaviour: BeatMaster not found");
     }
 }
