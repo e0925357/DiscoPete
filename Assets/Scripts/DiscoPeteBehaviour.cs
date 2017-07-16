@@ -34,6 +34,9 @@ public class DiscoPeteBehaviour : MonoBehaviour {
 	[SerializeField]
 	private GameObject deathPrefab;
 
+	[SerializeField]
+	private AudioSource winSound = null;
+
     // Use this for initialization
     void OnEnable()
     {
@@ -124,6 +127,11 @@ public class DiscoPeteBehaviour : MonoBehaviour {
         m_fMoved = 0.0f;
         //Debug.Log("YOU HAVE WON!");
         m_pLevelAndPointMaster.OnDiscoPeteFinishedCurrentLevel();
+
+		if (winSound)
+		{
+			winSound.Play();
+		}
     }
 
     private void BeatMasterOnBeatEvent()
