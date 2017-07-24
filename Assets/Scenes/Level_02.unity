@@ -1694,7 +1694,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   songInfo: {fileID: 11400000, guid: b70b1463135e81e42aaf02223ea66c95, type: 2}
   deactivateLightsSound: {fileID: 0}
-  maxBeatDiff: 0.2
+  shouldHandleSongEnd: 1
+  maxBeatDiff: 0.4
+  beatDiffType: 0
 --- !u!4 &1469517949
 Transform:
   m_ObjectHideFlags: 0

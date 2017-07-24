@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44605857, g: 0.49581826, b: 0.57448554, a: 1}
+  m_IndirectSpecularColor: {r: 0.44605875, g: 0.49581873, b: 0.574486, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -335,7 +335,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   songInfo: {fileID: 11400000, guid: 68c123a858bc6994f82519e7cf017a21, type: 2}
   deactivateLightsSound: {fileID: 0}
-  maxBeatDiff: 0.15
+  shouldHandleSongEnd: 1
+  maxBeatDiff: 0.4
+  beatDiffType: 0
 --- !u!1001 &490825519
 Prefab:
   m_ObjectHideFlags: 0

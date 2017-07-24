@@ -10,6 +10,11 @@ struct GameObjectPriorityPair
 	public int priority;
 }
 
+enum BeatDiffType
+{
+	Relative, Absolute
+}
+
 [RequireComponent(typeof(AudioSource))]
 public class BeatMaster : MonoBehaviour
 {
@@ -25,10 +30,13 @@ public class BeatMaster : MonoBehaviour
 	[SerializeField]
 	private bool shouldHandleSongEnd = true;
 
-    public float maxBeatDiff = 0.2f;
+	[SerializeField]
+	private float maxBeatDiff = 0.2f;
+	[SerializeField]
+	private BeatDiffType beatDiffType = BeatDiffType.Relative;
 
 	private int lastBeatIndex = -1;
-	private bool prevAllowsJump = false;
+	private int lastJumpMissIndex = -1;
 	
 	void Awake()
 	{
@@ -126,7 +134,8 @@ public class BeatMaster : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		int beat = getBeatIndex(getCurrentTime());
+		float time = getCurrentTime();
+		int beat = getBeatIndex(time);
 
 		if (beat > lastBeatIndex)
 		{
@@ -137,28 +146,31 @@ public class BeatMaster : MonoBehaviour
 			}
 		}
 
-        bool bAllowsJump = allowsJump();
+		int missIndex = getBeatIndex(time - (beatDiffType == BeatDiffType.Relative ? maxBeatDiff / songInfo.Bps : maxBeatDiff));
 
-        if(prevAllowsJump == true && bAllowsJump == false)
-        {
-            if(onJumpChancePassedEvent != null)
+
+		if (missIndex > lastJumpMissIndex)
+		{
+			lastJumpMissIndex = missIndex;
+
+			if (onJumpChancePassedEvent != null)
             {
                 onJumpChancePassedEvent();
             }
         }
-
-        prevAllowsJump = bAllowsJump;
 	}
 
     public bool allowsJump()
     {
-        float fCurrentTimeBeat = getCurrentTime() * songInfo.Bps;
-        float fNearestBeat = Mathf.Floor(fCurrentTimeBeat + 0.5f);
+        float fCurrentTimeBeat = convertToBeats(getCurrentTime());
+        float fNearestBeat = Mathf.Round(fCurrentTimeBeat);
 
         float fDiff = Mathf.Abs(fCurrentTimeBeat - fNearestBeat);
-        fDiff /= songInfo.Bps;
 
-		//Debug.Log(string.Format("Beat diff: {0}", fDiff));
+		if(beatDiffType == BeatDiffType.Absolute)
+			fDiff /= songInfo.Bps;
+
+		Debug.Log(string.Format("fDiff: {0}", fDiff));
 
         return fDiff < maxBeatDiff;
     }
@@ -170,7 +182,12 @@ public class BeatMaster : MonoBehaviour
 
 	private int getBeatIndex(float time)
 	{
-		return Mathf.FloorToInt(time * songInfo.Bps);
+		return Mathf.FloorToInt(convertToBeats(time));
+	}
+
+	private float convertToBeats(float time)
+	{
+		return time * songInfo.Bps + 0.5f;
 	}
 
     public float getMusicLength()
@@ -185,7 +202,7 @@ public class BeatMaster : MonoBehaviour
 
 	public int NearestBeat
 	{
-		get { return Mathf.RoundToInt(getCurrentTime() * songInfo.Bps); }
+		get { return Mathf.RoundToInt(convertToBeats(getCurrentTime())); }
 	}
 
 	public int LastBeat { get { return lastBeatIndex; } }
